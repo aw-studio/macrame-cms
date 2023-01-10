@@ -10,7 +10,7 @@ const login: Create<LoginFormData> = data =>
             baseURL: import.meta.env.VITE_APP_URL as string,
         })
         .then(() =>
-            client.post('/api/login', data, {
+            client.post('/admin/login', data, {
                 baseURL: import.meta.env.VITE_APP_URL as string,
             })
         );

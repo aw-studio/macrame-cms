@@ -26,17 +26,7 @@ class AdminServiceProvider extends ServiceProvider
     public function boot()
     {
         View::addNamespace('admin', base_path() . '/admin/resources/views');
-        // $this->loadViewsFrom(__DIR__.'/resources/views', 'admin');
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
-        $this->registerRoutes();
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
     }
-
-    protected function registerRoutes()
-    {
-        Route::get('/admin/{any?}', function () {
-            return view('admin::app');
-        });
-    }
-
 }

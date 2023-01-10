@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\CacheService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +14,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(CacheService::class, function ($app) {
+            return new CacheService(
+                $app['cache.store']
+            );
+        });
+
+        $this->app['chache.keys'] = [
+            'announcements' => [
+                'home.featured',
+                'home.association',
+            ],
+        ];
     }
 
     /**

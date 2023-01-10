@@ -1,157 +1,126 @@
-/** @type {import('tailwindcss').Config} */
-
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
-    content: ['./resources/**/*.vue', './resources/views/**/*.blade.php'],
+    content: ['./resources/**/*.{vue,js,ts}', './resources/views/**/*.blade.php'],
     theme: {
-        borderRadius: {
-            full: '9999px',
-            lg: '19px', // TODO:
-            md: '15px',
-            sm: '11px',
-            DEFAULT: '8px',
-            xs: '3px',
+        container: {
+            center: true,
+            padding: {
+                md: '40px',
+                DEFAULT: '20px',
+            },
         },
         colors: {
             transparent: 'transparent',
+            current: 'currentColor',
             white: 'white',
             black: 'black',
+            success: 'rgb(0 128 0 / <alpha-value>)',
+            warning: 'rgb(255 255 0 / <alpha-value>)',
+            danger: 'rgb(255 0 0 / <alpha-value>)',
+            section: 'rgb(231 231 231 / <alpha-value>)',
+            primary: {
+                DEFAULT: 'rgb(24 150 255 / <alpha-value>)',
+                200: 'rgb(153 208 255 / <alpha-value>)',
+                500: 'rgb(24 150 255 / <alpha-value>)',
+            },
+            secondary: {
+                DEFAULT: 'rgb(168 168 168 / <alpha-value>)',
+                100: 'rgb(231 231 231 / <alpha-value>)',
+                500: 'rgb(168 168 168 / <alpha-value>)',
+                900: 'rgb(39 39 39 / <alpha-value>)',
+            },
             gray: {
-                50: '#F6F7FA',
-                100: '#F8F9FB',
-                200: '#E5E7EF',
-                300: '#D6D8E2',
-                400: '#e1e3eb',
-                500: '#AFAEB9',
-                700: '#3c3c47',
-                800: '#1f1f2c',
-                900: '#090914',
-                DEFAULT: '#AFAEB9',
+                DEFAULT: 'rgb(168 168 168 / <alpha-value>)',
+                100: 'rgb(231 231 231 / <alpha-value>)',
+                500: 'rgb(168 168 168 / <alpha-value>)',
+                900: 'rgb(39 39 39 / <alpha-value>)',
             },
-            green: {
-                500: '#4E9060',
-                signal: '#4BDB9C',
-                DEFAULT: '#4BDB9C',
-            },
-            gradient: {
-                'red-300': '#FF8A93',
-                'red-500': '#FF7882',
-                'red-700': '#FF5E6A',
-                'orange-300': '#FFB770',
-                'orange-500': '#FEAD5E',
-                'orange-700': '#FF9C3D',
-            },
-            red: {
-                100: '#FFDADD',
-                500: '#FF7782',
-                signal: '#F74B6D',
-                DEFAULT: '#FF7782',
-            },
-            yellow: {
-                signal: '#F8DB60',
-                DEFAULT: '#F8DB60',
-            },
-            indigo: {
-                500: '#031266',
-                900: '#120F30',
-                DEFAULT: '#031266',
-            },
-            orange: {
-                100: '#FFEEDF',
-                300: '#FFD4AA',
-                500: '#FEAD5E',
-                700: '#FF9126',
-                DEFAULT: '#FEAD5E',
-            },
-            purple: {
-                500: '#9F46E4',
-                DEFAULT: '#9F46E4',
-            },
-            pink: {
-                500: '#FE4CA6',
-                DEFAULT: '#FE4CA6',
-            },
-            blue: {
-                500: '#0064FB',
-                DEFAULT: '#0064FB',
-            },
-            lightblue: {
-                500: '#48DAFD',
-                DEFAULT: '#48DAFD',
-            },
-            turkise: {
-                500: '#16DB7E',
-                DEFAULT: '#16DB7E',
-            },
-            grasgreen: {
-                500: '#00B83A',
-                DEFAULT: '#00B83A',
-            },
-            lightorange: {
-                500: '#FEA800',
-                DEFAULT: '#FEA800',
-            },
-            darkorange: {
-                500: '#FF7512',
-                DEFAULT: '#FF7512',
-            },
-        },
-        fontFamily: {
-            sans: ['DM Sans', 'sans-serif'],
-            code: ['Source Code Pro', 'DM Sans', 'sans-serif'],
         },
         fontSize: {
-            xs: ['9px', '15px'],
-            sm: ['11px', '17px'],
-            base: ['14px', '24px'],
-            lg: ['16px', '24px'],
-            xl: ['20px', '30px'],
-            '2xl': ['28px', '38px'],
+            xs: ['14px', '20px'],
+            sm: ['15px', '25px'],
+            base: ['16px', '22px'],
+            lg: ['20px', '27px'],
+            xl: ['24px', '33px'],
+            '2xl': ['32px', '38px'],
         },
-        boxShadow: {
-            DEFAULT: '0px 0px 19px 0px rgba(0,0,0,0.08)',
-            primary: '0px 6px 9px -4px rgba(255,116,76,0.6)',
-            sm: '0px 2px 4px 0px rgba(0,0,0,0.05)',
-        },
-        screens: {
-            sm: '640px',
-            // => @media (min-width: 640px) { ... }
-
-            md: '768px',
-            // => @media (min-width: 768px) { ... }
-
-            lg: '1024px',
-            // => @media (min-width: 1024px) { ... }
-
-            xl: '1280px',
-            // => @media (min-width: 1280px) { ... }
-
-            '2xl': '1730px',
-            // => @media (min-width: 1730px) { ... }
-        },
-        extend: {
-            gridTemplateColumns: {
-                app: '300px 1fr',
-            },
-        },
+        extend: {},
     },
     plugins: [
-        plugin(function ({ addBase }) {
+        plugin(function ({ addBase, theme }) {
             addBase({
+                body: {
+                    '@apply text-secondary-900 text-base': {},
+                },
+                'h1, h2, h3, h4, p': {
+                    maxWidth: '56rem',
+                    '@apply mb-8': {},
+                },
+                'h1, h2, h3, h4': {
+                    paddingRight: '10%',
+                },
+                'p + h1, p + h2, p + h3, p + h4': {
+                    '@apply pt-8': {},
+                },
                 'h1, .h1': {
-                    '@apply text-2xl font-medium md:text-2xl': {},
+                    '@apply text-2xl font-semibold': {},
                 },
                 'h2, .h2': {
-                    '@apply text-xl md:text-xl font-medium': {},
+                    '@apply text-xl font-semibold': {},
                 },
                 'h3, .h3': {
-                    '@apply text-base lg:text-lg font-medium': {},
+                    '@apply text-lg font-semibold': {},
                 },
                 'h4, .h4': {
-                    '@apply text-base font-medium': {},
+                    '@apply text-base font-semibold': {},
+                },
+                p: {
+                    '@apply text-base leading-7 font-light': {},
+                },
+                '.prose a': {
+                    '@apply text-base font-normal max-w-[700px] text-primary hover:text-primary underline':
+                        {},
+                },
+                '.prose ul, .prose ol': {
+                    '@apply text-base max-w-[700px] list-outside flex mb-8 ml-4 flex-col gap-4':
+                        {},
+                },
+                '.prose ul': {
+                    '@apply list-disc': {},
+                },
+                '.prose ol': {
+                    '@apply list-decimal': {},
+                },
+                '.prose li': {
+                    '@apply relative': {},
+                },
+                '.prose ul li::marker, .prose ol li::marker': {
+                    '@apply absolute pr-4': {},
+                },
+                '.prose ul>li>p, .prose ol>li>p': {
+                    '@apply inline mb-0': {},
                 },
             });
         }),
+        function ({ addComponents }) {
+            addComponents({
+                '.container': {
+                    maxWidth: '100%',
+                    '@screen sm': {
+                        maxWidth: '100%',
+                    },
+                    '@screen md': {
+                        maxWidth: '100%',
+                    },
+                    '@screen lg': {
+                        maxWidth: '100%',
+                    },
+                    '@screen xl': {
+                        maxWidth: '1260px',
+                    },
+                },
+            });
+        },
     ],
 };

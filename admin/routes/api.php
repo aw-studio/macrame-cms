@@ -2,8 +2,6 @@
 
 use Admin\Http\Controllers\AnnouncementController;
 use Admin\Http\Controllers\Auth\AuthenticatedSessionController;
-use Admin\Http\Controllers\Auth\NewPasswordController;
-use Admin\Http\Controllers\Auth\PasswordResetLinkController;
 use Admin\Http\Controllers\BlockController;
 use Admin\Http\Controllers\EventController;
 use Admin\Http\Controllers\LinkController;
@@ -120,14 +118,4 @@ Route::group([
     // people
     Route::apiResource('/people', PersonController::class);
     Route::get('/people/{person}', [PersonController::class, 'show']);
-});
-
-Route::group([
-    'middleware' => ['web'],
-], function () {
-    Route::post('/admin/login', [AuthenticatedSessionController::class, 'store'])->name('login');
-
-    Route::post('/admin/forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
-
-    Route::post('/admin/reset-password', [NewPasswordController::class, 'store'])->name('password.update');
 });
