@@ -28,7 +28,7 @@
 import { Input, Card, Link } from '@/ui';
 
 import { pageForm } from '@/entities';
-import SectionTextFullForm from '@/modules/content/elements/TextFull/SectionTextFullForm.vue';
+import { SectionTextFullForm } from '@/modules/content';
 import { onMounted } from 'vue';
 
 onMounted(() => {
