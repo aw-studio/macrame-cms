@@ -1,4 +1,5 @@
 import { ref } from 'vue';
+import { SectionTextFull, SectionImageSmall, SectionImageFull, SectionImageCarousel, SectionVideoEmbed, SectionGridGallery, SectionInfoBox, SectionCTA, SectionMap, SectionInfoSection, SectionCards, SectionDownloads, SectionTeaserBoxes, SectionTextImage, SectionAccordion, SectionLogoWall, SectionBlock, SectionH2 } from './elements';
 
 export const hideSections = ref<boolean>(false);
 
@@ -7,27 +8,9 @@ export { default as Drawers } from './Drawers.vue';
 
 export * from './elements';
 
-import SectionTextFull from './elements/TextFull/SectionTextFull.vue';
-import SectionTextImage from './elements/TextImage/SectionTextImage.vue';
-import SectionInfoBox from './elements/InfoBox/SectionInfoBox.vue';
-import SectionCTA from './elements/CTA/SectionCTA.vue';
-import SectionDownloads from './elements/Downloads/SectionDownloads.vue';
-import SectionMap from './elements/Map/SectionMap.vue';
-import SectionInfoSection from './elements/InfoSection/SectionInfoSection.vue';
-import SectionImageSmall from './elements/ImageSmall/SectionImageSmall.vue';
-import SectionImageFull from './elements/ImageFull/SectionImageFull.vue';
-import SectionVideoEmbed from './elements/VideoEmbed/SectionVideoEmbed.vue';
-import SectionGridGallery from './elements/GridGallery/SectionGridGallery.vue';
-import SectionCards from './elements/Cards/SectionCards.vue';
-import SectionAccordion from './elements/Accordion/SectionAccordion.vue';
-import SectionTeaserBoxes from './elements/TeaserBoxes/SectionTeaserBoxes.vue';
-import SectionLogoWall from './elements/LogoWall/SectionLogoWall.vue';
-import SectionImageCarousel from './elements/ImageCarousel/SectionImageCarousel.vue';
-import SectionBlock from './elements/Block/SectionBlock.vue';
-import { SectionH2 } from './elements';
 
+// why do we use this?
 const sections = {
-    h2: SectionH2,
     text_full: SectionTextFull,
     image_small: SectionImageSmall,
     image_full: SectionImageFull,
@@ -45,6 +28,7 @@ const sections = {
     accordion: SectionAccordion,
     logo_wall: SectionLogoWall,
     block: SectionBlock,
+    h2: SectionH2,
 };
 
 export { sections };

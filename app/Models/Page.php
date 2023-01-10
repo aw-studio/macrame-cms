@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Admin\Contracts\Pages\Page as PageContract;
-use Admin\Traits\HasFiles;
-use Admin\Traits\IsPage;
+use App\Models\Traits\HasFiles;
+use App\Models\Traits\IsPage;
 use App\Casts\ContentCast;
 use App\Casts\PageAttributesCast;
 use App\Casts\PageTemplateCast;

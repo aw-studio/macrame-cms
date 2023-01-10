@@ -14,7 +14,8 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "macramejs/admin-laravel": "dev-main"
+        "macramejs/admin-laravel": "dev-main",
+        "macramejs/macrame-laravel": "dev-main"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -29,6 +30,7 @@
         "psr-4": {
             "App\\": "app/",
             "Admin\\": "admin/app/",
+            "Content\\": "content/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Admin\Traits\HasFiles;
+use App\Models\Traits\HasFiles;
 use App\Casts\PartialAttributesCast;
 use Illuminate\Database\Eloquent\Model;
 

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Admin\Traits\HasFiles;
+use App\Models\Traits\HasFiles;
 use App\Casts\ContentCast;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

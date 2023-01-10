@@ -2,9 +2,21 @@
 
 namespace App\Casts;
 
-use App\Casts\Resolvers\LinkResolver;
-use Macrame\Content\ContentCast as BaseContentCast;
+use Content\CTA\CTAParser;
+use Content\Map\MapParser;
+use Content\Block\BlockParser;
+use Content\Cards\CardsParser;
+use Content\InfoBox\InfoBoxParser;
+use Content\LogoWall\LogoWallParser;
+use Admin\Support\Resolver\LinkResolver;
 use Macrame\Content\Contracts\Parser;
+use Content\Downloads\DownloadsParser;
+use Content\ImageFull\ImageFullParser;
+use Content\TextImage\TextImageParser;
+use Content\ImageCarousel\CarouselParser;
+use Content\GridGallery\GridGalleryParser;
+use Content\TeaserBoxes\TeaserBoxesParser;
+use Macrame\Content\ContentCast as BaseContentCast;
 
 class ContentCast extends BaseContentCast
 {
@@ -14,20 +26,20 @@ class ContentCast extends BaseContentCast
      * @var array
      */
     protected $parsers = [
-        'block'          => Parsers\BlockParser::class,
-        'image_small'    => Parsers\ImageFullParser::class,
-        'image_full'     => Parsers\ImageFullParser::class,
-        'text_image'     => Parsers\TextImageParser::class,
-        'info_section'   => Parsers\TextImageParser::class,
-        'logo_wall'      => Parsers\LogoWallParser::class,
-        'image_carousel' => Parsers\CarouselParser::class,
-        'teaser_boxes'   => Parsers\TeaserBoxesParser::class,
-        'cta'            => Parsers\CTAParser::class,
-        'map'            => Parsers\MapParser::class,
-        'info_box'       => Parsers\InfoBoxParser::class,
-        'cards'          => Parsers\CardsParser::class,
-        'downloads'      => Parsers\DownloadsParser::class,
-        'grid_gallery'   => Parsers\GridGalleryParser::class,
+        'block'          => BlockParser::class,
+        'image_small'    => ImageFullParser::class,
+        'image_full'     => ImageFullParser::class,
+        'text_image'     => TextImageParser::class,
+        'info_section'   => TextImageParser::class,
+        'logo_wall'      => LogoWallParser::class,
+        'image_carousel' => CarouselParser::class,
+        'teaser_boxes'   => TeaserBoxesParser::class,
+        'cta'            => CTAParser::class,
+        'map'            => MapParser::class,
+        'info_box'       => InfoBoxParser::class,
+        'cards'          => CardsParser::class,
+        'downloads'      => DownloadsParser::class,
+        'grid_gallery'   => GridGalleryParser::class,
     ];
 
     /**

@@ -60,7 +60,7 @@ import {
 } from './index';
 import {
     DrawerTextFull,
-    DrawerImageCarousel,
+    // DrawerImageCarousel,
     DrawerTextImage,
     DrawerInfoBox,
     DrawerCTA,
@@ -76,6 +76,7 @@ import {
     DrawerAccordion,
     DrawerLogoWall,
     DrawerBlock,
+    DrawerH2
 } from './index';
-import DrawerH2 from './elements/H2/DrawerH2.vue';
+// import DrawerH2 from './elements/H2/DrawerH2.vue';
 </script>

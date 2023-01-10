@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Admin\Traits\HasFiles;
-use App\Casts\AnnouncementAttributesCast;
 use App\Casts\ContentCast;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Traits\HasFiles;
 use Illuminate\Database\Eloquent\Model;
+use App\Casts\AnnouncementAttributesCast;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Announcement extends Model
 {
