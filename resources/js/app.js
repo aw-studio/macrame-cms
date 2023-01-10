@@ -1,1 +1,3 @@
-import './bootstrap';
+// import './bootstrap';
+
+console.log('hellp from app')
