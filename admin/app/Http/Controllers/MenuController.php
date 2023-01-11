@@ -14,7 +14,7 @@ class MenuController
     /**
      * Gets a list of navigation types.
      *
-     * @param  Request                     $request
+     * @param  Request  $request
      * @return AnonymousResourceCollection
      */
     public function items(Request $request)
@@ -27,7 +27,7 @@ class MenuController
     /**
      * Gets a list of navigation types.
      *
-     * @param  Request                     $request
+     * @param  Request  $request
      * @return AnonymousResourceCollection
      */
     public function item(Request $request, Menu $menu)
@@ -38,7 +38,7 @@ class MenuController
     /**
      * Store a new menu.
      *
-     * @param  Request $request
+     * @param  Request  $request
      * @return void
      */
     public function store(Request $request)

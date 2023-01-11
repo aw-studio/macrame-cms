@@ -20,7 +20,7 @@ class PageResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request                                        $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
@@ -29,20 +29,20 @@ class PageResource extends JsonResource
             'id' => $this->id,
 
             // static
-            'name'        => $this->name,
-            'slug'        => $this->slug,
+            'name' => $this->name,
+            'slug' => $this->slug,
             'preview_key' => $this->preview_key,
-            'template'    => (string) $this->template,
-            'parent_id'   => $this->parent_id,
+            'template' => (string) $this->template,
+            'parent_id' => $this->parent_id,
 
             // dynamic
-            'content'    => $this->content->toArray(),
+            'content' => $this->content->toArray(),
             'attributes' => $this->attributes->toArray(),
-            'full_slug'  => $this->getFullSlug(),
+            'full_slug' => $this->getFullSlug(),
 
             // livetime
-            'publish_at'         => $this->publish_at,
-            'is_live'            => $this->is_live,
+            'publish_at' => $this->publish_at,
+            'is_live' => $this->is_live,
             'has_been_published' => $this->publish_at < now(),
         ];
     }

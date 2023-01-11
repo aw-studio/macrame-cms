@@ -14,7 +14,7 @@ class RedirectController
     /**
      * Page index page.
      *
-     * @param  Page $redirect
+     * @param  Page  $redirect
      * @return Page
      */
     public function index(Request $request, RedirectIndex $index)
@@ -28,7 +28,7 @@ class RedirectController
     /**
      * Show the Redirect.
      *
-     * @param  Redirect         $redirect
+     * @param  Redirect  $redirect
      * @return RedirectResource
      */
     public function show(Redirect $redirect)
@@ -39,17 +39,17 @@ class RedirectController
     /**
      * Update the Redirect.
      *
-     * @param  Request          $request
-     * @param  Redirect         $redirect
+     * @param  Request  $request
+     * @param  Redirect  $redirect
      * @return RedirectResource
      */
     public function update(Request $request, Redirect $redirect)
     {
         $validated = $request->validate([
-            'from_url'         => 'string',
-            'to_url'           => 'string',
+            'from_url' => 'string',
+            'to_url' => 'string',
             'http_status_code' => 'numeric',
-            'active'           => 'boolean',
+            'active' => 'boolean',
         ]);
 
         $redirect->update($validated);
@@ -62,14 +62,14 @@ class RedirectController
     /**
      * Store a new Redirect.
      *
-     * @param  Request          $request
+     * @param  Request  $request
      * @return RedirectResource
      */
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'from_url'         => 'string',
-            'to_url'           => 'string',
+            'from_url' => 'string',
+            'to_url' => 'string',
             'http_status_code' => 'numeric',
         ]);
 
@@ -86,7 +86,7 @@ class RedirectController
      * Destroy the given Redirect.
      *
      * @param  Request  $request
-     * @param  Redirect $redirect
+     * @param  Redirect  $redirect
      * @return void
      */
     public function destroy(Request $request, Redirect $redirect)

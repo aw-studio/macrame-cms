@@ -21,14 +21,14 @@ class UserProfileController
     /**
      * Update the users password.
      *
-     * @param  Request          $request
+     * @param  Request  $request
      * @return RedirectResponse
      */
     public function updatePassword(Request $request)
     {
         $request->validate([
             'old_password' => 'required',
-            'password'     => 'required|confirmed|min:6',
+            'password' => 'required|confirmed|min:6',
         ]);
 
         if (! Hash::check($request->old_password, $request->user()->password)) {

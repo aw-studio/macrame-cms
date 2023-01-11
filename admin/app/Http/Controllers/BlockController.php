@@ -13,7 +13,7 @@ class BlockController
     /**
      * Page index page.
      *
-     * @param  Page $block
+     * @param  Page  $block
      * @return Page
      */
     public function items(Request $request, BlockIndex $index)
@@ -27,7 +27,7 @@ class BlockController
     /**
      * Show the Block.
      *
-     * @param  Block         $block
+     * @param  Block  $block
      * @return BlockResource
      */
     public function show(Block $block)
@@ -38,14 +38,14 @@ class BlockController
     /**
      * Update the Block.
      *
-     * @param  Request       $request
-     * @param  Block         $block
+     * @param  Request  $request
+     * @param  Block  $block
      * @return BlockResource
      */
     public function update(Request $request, Block $block)
     {
         $validated = $request->validate([
-            'name'    => 'sometimes|string',
+            'name' => 'sometimes|string',
             'content' => 'array',
         ]);
 
@@ -57,7 +57,7 @@ class BlockController
     /**
      * Store a new Block.
      *
-     * @param  Request       $request
+     * @param  Request  $request
      * @return BlockResource
      */
     public function store(Request $request)
@@ -78,8 +78,8 @@ class BlockController
     /**
      * Destroy the given Block.
      *
-     * @param  Request $request
-     * @param  Block   $block
+     * @param  Request  $request
+     * @param  Block  $block
      * @return void
      */
     public function destroy(Request $request, Block $block)

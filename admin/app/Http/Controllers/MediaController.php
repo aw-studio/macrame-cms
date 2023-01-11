@@ -15,8 +15,8 @@ class MediaController
     /**
      * Media index page.
      *
-     * @param  Request   $request
-     * @param  PageIndex $index
+     * @param  Request  $request
+     * @param  PageIndex  $index
      * @return PageIndex
      */
     public function items(Request $request, MediaIndex $index)
@@ -31,8 +31,8 @@ class MediaController
     /**
      * Show a single file.
      *
-     * @param  Request       $request
-     * @param  File          $file
+     * @param  Request  $request
+     * @param  File  $file
      * @return MediaResource
      */
     public function item(Request $request, File $file)
@@ -43,7 +43,7 @@ class MediaController
     /**
      * Show the Media index.
      *
-     * @param  Page $page
+     * @param  Page  $page
      * @return Page
      */
     public function index($mimeType = null)
@@ -56,7 +56,7 @@ class MediaController
     /**
      * Destroy multiple files.
      *
-     * @param  Request          $request
+     * @param  Request  $request
      * @return RedirectResponse
      */
     public function destroy(Request $request)
@@ -73,7 +73,7 @@ class MediaController
     /**
      * Upload files.
      *
-     * @param  Request $request
+     * @param  Request  $request
      * @return void
      */
     public function upload(Request $request, MediaCollection $collection = null)

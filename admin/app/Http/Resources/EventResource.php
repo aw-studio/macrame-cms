@@ -20,24 +20,24 @@ class EventResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request                                        $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
     {
         return [
-            'id'         => $this->id,
+            'id' => $this->id,
             'attributes' => $this->attributes->toArray(),
-            'starts_at'  => $this->starts_at ? new DateTimeResource($this->starts_at) : [
-                'original'      => null,
-                'formatted'     => null,
-                'label'         => null,
+            'starts_at' => $this->starts_at ? new DateTimeResource($this->starts_at) : [
+                'original' => null,
+                'formatted' => null,
+                'label' => null,
                 'readable_diff' => null,
             ],
             'ends_at' => $this->ends_at ? new DateTimeResource($this->ends_at) : [
-                'original'      => null,
-                'formatted'     => null,
-                'label'         => null,
+                'original' => null,
+                'formatted' => null,
+                'label' => null,
                 'readable_diff' => null,
             ],
         ];

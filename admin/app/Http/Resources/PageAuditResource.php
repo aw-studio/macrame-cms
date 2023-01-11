@@ -14,7 +14,7 @@ class PageAuditResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request                                        $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
@@ -39,9 +39,9 @@ class PageAuditResource extends JsonResource
         }
 
         return [
-            'id'         => $this->id,
-            'user'       => $this->user,
-            'event'      => $this->event,
+            'id' => $this->id,
+            'user' => $this->user,
+            'event' => $this->event,
             'old_values' => $old,
             'new_values' => $new,
             'created_at' => $this->created_at,

@@ -17,7 +17,7 @@ class MediaCollectionController
     /**
      * Get MediaCollection items.
      *
-     * @param  Request                     $request
+     * @param  Request  $request
      * @return AnonymousResourceCollection
      */
     public function items(Request $request)
@@ -28,8 +28,8 @@ class MediaCollectionController
     /**
      * Get MediaCollection item.
      *
-     * @param  Request                 $request
-     * @param  MediaCollection         $collection
+     * @param  Request  $request
+     * @param  MediaCollection  $collection
      * @return MediaCollectionResource
      */
     public function item(Request $request, MediaCollection $collection)
@@ -40,14 +40,14 @@ class MediaCollectionController
     /**
      * Create a new MediaCollection.
      *
-     * @param  Request $request
+     * @param  Request  $request
      * @return void
      */
     public function store(Request $request)
     {
         $validated = $request->validate([
             'title' => 'required|string',
-            'key'   => 'required|string|unique:file_collections,key',
+            'key' => 'required|string|unique:file_collections,key',
         ]);
 
         // Enforce sluggified slug
@@ -63,8 +63,8 @@ class MediaCollectionController
     /**
      * Destroy a MediaCollection.
      *
-     * @param  Request         $request
-     * @param  MediaCollection $collection
+     * @param  Request  $request
+     * @param  MediaCollection  $collection
      * @return void
      */
     public function destroy(Request $request, MediaCollection $collection)
@@ -75,8 +75,8 @@ class MediaCollectionController
     /**
      * Add a list of files to the collection.
      *
-     * @param  Request         $request
-     * @param  MediaCollection $collection
+     * @param  Request  $request
+     * @param  MediaCollection  $collection
      * @return void
      */
     public function add(Request $request, MediaCollection $collection)
@@ -98,8 +98,8 @@ class MediaCollectionController
     /**
      * Remove a list of files from the collection.
      *
-     * @param  Request         $request
-     * @param  MediaCollection $collection
+     * @param  Request  $request
+     * @param  MediaCollection  $collection
      * @return void
      */
     public function remove(Request $request, MediaCollection $collection)
@@ -121,8 +121,8 @@ class MediaCollectionController
     /**
      * Upload files.
      *
-     * @param  Request         $request
-     * @param  MediaCollection $collection
+     * @param  Request  $request
+     * @param  MediaCollection  $collection
      * @return void
      */
     public function upload(Request $request, MediaCollection $collection)

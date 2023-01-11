@@ -1,9 +1,9 @@
 <?php
-use Illuminate\Support\Facades\Route;
 
+use Admin\Http\Controllers\Auth\AuthenticatedSessionController;
 use Admin\Http\Controllers\Auth\NewPasswordController;
 use Admin\Http\Controllers\Auth\PasswordResetLinkController;
-use Admin\Http\Controllers\Auth\AuthenticatedSessionController;
+use Illuminate\Support\Facades\Route;
 
 Route::group([
     'middleware' => ['web'],
@@ -14,7 +14,6 @@ Route::group([
 
     Route::post('/admin/reset-password', [NewPasswordController::class, 'store'])->name('password.update');
 });
-
 
 Route::get('/admin/{any?}', function () {
     return view('admin::app');

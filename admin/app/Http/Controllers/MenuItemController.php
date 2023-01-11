@@ -13,19 +13,19 @@ class MenuItemController
     /**
      * Updates a new navigation item.
      *
-     * @param  Request $request
-     * @param  Menu    $menu
+     * @param  Request  $request
+     * @param  Menu  $menu
      * @param  string  $id
      * @return void
      */
     public function update(Request $request, Menu $menu, $id)
     {
         $validated = $request->validate([
-            'title'              => 'required|string',
-            'link'               => 'nullable|string',
-            'is_group'           => 'bool',
+            'title' => 'required|string',
+            'link' => 'nullable|string',
+            'is_group' => 'bool',
             'alternative_layout' => 'bool',
-            'cols'               => 'nullable|numeric',
+            'cols' => 'nullable|numeric',
         ]);
 
         if ($menu->type == 'main') {
@@ -46,18 +46,18 @@ class MenuItemController
      * Store a new navigation item.
      *
      * @param  Request  $request
-     * @param  Menu     $menu
-     * @param  int|null $parentId
+     * @param  Menu  $menu
+     * @param  int|null  $parentId
      * @return void
      */
     public function store(Request $request, Menu $menu, $parentId = null)
     {
         $validated = $request->validate([
-            'title'              => 'required|string',
-            'link'               => 'nullable|string',
-            'is_group'           => 'bool',
+            'title' => 'required|string',
+            'link' => 'nullable|string',
+            'is_group' => 'bool',
             'alternative_layout' => 'bool',
-            'cols'               => 'nullable|numeric',
+            'cols' => 'nullable|numeric',
         ]);
 
         if ($menu->type == 'main') {
@@ -74,7 +74,7 @@ class MenuItemController
         }
 
         $item = MenuItem::create(array_merge($validated, [
-            'menu_id'   => $menu->id,
+            'menu_id' => $menu->id,
             'parent_id' => $parent ? $parent->id : null,
         ]));
 
@@ -84,9 +84,9 @@ class MenuItemController
     /**
      * Remove an item from the navigation tree.
      *
-     * @param  Request $request
-     * @param  Menu    $menu
-     * @param  int     $itemId
+     * @param  Request  $request
+     * @param  Menu  $menu
+     * @param  int  $itemId
      * @return void
      */
     public function destroy(Request $request, Menu $menu, $itemId)

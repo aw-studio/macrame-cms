@@ -15,7 +15,7 @@ class PageController
     /**
      * Get Page items.
      *
-     * @param  Page $page
+     * @param  Page  $page
      * @return Page
      */
     public function items(Request $request, PageIndex $index)
@@ -30,8 +30,8 @@ class PageController
     /**
      * Get Page item.
      *
-     * @param  Request      $request
-     * @param  Page         $page
+     * @param  Request  $request
+     * @param  Page  $page
      * @return PageResource
      */
     public function item(Request $request, Page $page)
@@ -42,20 +42,20 @@ class PageController
     /**
      * Update the page.
      *
-     * @param  Request $request
-     * @param  Page    $page
+     * @param  Request  $request
+     * @param  Page  $page
      * @return void
      */
     public function update(Request $request, Page $page)
     {
         $validated = $request->validate([
-            'content'          => 'array',
-            'attributes'       => 'array',
-            'slug'             => 'sometimes|nullable',
-            'name'             => 'sometimes|string',
-            'is_live'          => 'sometimes|boolean',
-            'publish_at'       => 'sometimes|date|nullable',
-            'meta.title'       => 'sometimes|string|nullable',
+            'content' => 'array',
+            'attributes' => 'array',
+            'slug' => 'sometimes|nullable',
+            'name' => 'sometimes|string',
+            'is_live' => 'sometimes|boolean',
+            'publish_at' => 'sometimes|date|nullable',
+            'meta.title' => 'sometimes|string|nullable',
             'meta.description' => 'sometimes|string|nullable',
         ]);
 
@@ -78,7 +78,7 @@ class PageController
     /**
      * Store a new page.
      *
-     * @param  Request $request
+     * @param  Request  $request
      * @return void
      */
     public function store(Request $request)
@@ -88,15 +88,15 @@ class PageController
             : null;
 
         $validated = $request->validate([
-            'name'     => 'required|string',
-            'slug'     => 'required|string',
+            'name' => 'required|string',
+            'slug' => 'required|string',
             'template' => 'required|string',
         ]);
 
         $page = Page::make([
             ...$validated,
             'parent_id' => $request->parent_id,
-            'slug'      => Str::slug($request->slug ?: $request->name),
+            'slug' => Str::slug($request->slug ?: $request->name),
         ]);
 
         $page->creator_id = $request->user()->id;
@@ -111,7 +111,7 @@ class PageController
      * Destroy the given page.
      *
      * @param  Request  $request
-     * @param  Page     $page
+     * @param  Page  $page
      * @return Response
      */
     public function destroy(Request $request, Page $page)
@@ -139,8 +139,8 @@ class PageController
     /**
      * Duplicate a page with all contents.
      *
-     * @param  Request          $request
-     * @param  Page             $page
+     * @param  Request  $request
+     * @param  Page  $page
      * @return RedirectResponse
      */
     public function duplicate(Request $request, Page $page)

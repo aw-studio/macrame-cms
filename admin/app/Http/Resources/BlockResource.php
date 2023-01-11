@@ -20,7 +20,7 @@ class BlockResource extends JsonResource
     /**
      * Gets the value array containing all required attributes.
      *
-     * @param  \Illuminate\Http\Request                                        $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function value($request)

@@ -3,11 +3,9 @@
 namespace Admin\Http\Controllers;
 
 use Admin\Http\Resources\PageTreeResource;
-use Admin\Policies\PageTreePolicy;
 use App\Models\Page;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-use Illuminate\Support\Facades\Gate;
 
 class PageTreeController
 {
@@ -24,7 +22,7 @@ class PageTreeController
     /**
      * Update the order for of the page tree.
      *
-     * @param  Request $request
+     * @param  Request  $request
      * @return void
      */
     public function update(Request $request)

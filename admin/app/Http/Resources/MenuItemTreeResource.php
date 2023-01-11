@@ -20,15 +20,15 @@ class MenuItemTreeResource extends TreeResource
     /**
      * Gets the value array containing all required attributes.
      *
-     * @param  \Illuminate\Http\Request                                        $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function value($request)
     {
         return [
-            'id'        => $this->id,
-            'title'     => $this->title,
-            'link'      => $this->link?->value,
+            'id' => $this->id,
+            'title' => $this->title,
+            'link' => $this->link?->value,
             'is_public' => $this->isPublic(),
         ];
     }

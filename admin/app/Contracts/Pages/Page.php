@@ -21,7 +21,7 @@ interface Page extends Tree
     /**
      * Get the page model from the given request.
      *
-     * @param  Request $request
+     * @param  Request  $request
      * @return self
      */
     public static function fromRequestOrFail(Request $request);
@@ -38,7 +38,7 @@ interface Page extends Tree
      *
      * @return string|Closure
      */
-    public function getRouteAction(): string | Closure;
+    public function getRouteAction(): string|Closure;
 
     /**
      * Gets the full slug of the page.

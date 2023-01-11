@@ -15,7 +15,7 @@ class EventController
     /**
      * Get Page items.
      *
-     * @param  Page $page
+     * @param  Page  $page
      * @return Page
      */
     public function index(Request $request, EventIndex $index)
@@ -32,17 +32,17 @@ class EventController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request                   $request
+     * @param  Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'attributes'       => 'array',
+            'attributes' => 'array',
             'attributes.title' => 'required',
-            'slug'             => 'required|string|unique:events,slug',
-            'starts_at'        => 'required|date',
-            'ends_at'          => 'sometimes|date|nullable',
+            'slug' => 'required|string|unique:events,slug',
+            'starts_at' => 'required|date',
+            'ends_at' => 'sometimes|date|nullable',
         ]);
 
         // Enforce sluggified slug
@@ -63,7 +63,7 @@ class EventController
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Event         $event
+     * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
     public function show(Event $event)
@@ -74,17 +74,17 @@ class EventController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request                   $request
-     * @param  \App\Models\Event         $event
+     * @param  Request  $request
+     * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Event $event)
     {
         $validated = $request->validate([
             'attributes' => 'array',
-            'slug'       => 'sometimes|string|unique:events,slug',
-            'starts_at'  => 'required|date',
-            'ends_at'    => 'sometimes|date|nullable',
+            'slug' => 'sometimes|string|unique:events,slug',
+            'starts_at' => 'required|date',
+            'ends_at' => 'sometimes|date|nullable',
         ]);
 
         app(CacheService::class)->forget(Event::class);
@@ -97,7 +97,7 @@ class EventController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Event         $event
+     * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
     public function destroy(Event $event)

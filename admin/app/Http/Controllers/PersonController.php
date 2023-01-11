@@ -15,7 +15,7 @@ class PersonController
     /**
      * Get Page items.
      *
-     * @param  Page $page
+     * @param  Page  $page
      * @return Page
      */
     public function index(Request $request, PersonIndex $index)
@@ -30,17 +30,17 @@ class PersonController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePersonRequest $request
+     * @param  \App\Http\Requests\StorePersonRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StorePersonRequest $request)
     {
         $request->validate([
-            'name'        => 'required|string',
+            'name' => 'required|string',
             'description' => 'sometimes',
-            'email'       => 'sometimes',
-            'image'       => 'sometimes',
-            'phone'       => 'sometimes',
+            'email' => 'sometimes',
+            'image' => 'sometimes',
+            'phone' => 'sometimes',
         ]);
 
         $person = Person::create($request->except('image'));
@@ -57,7 +57,7 @@ class PersonController
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Person        $person
+     * @param  \App\Models\Person  $person
      * @return \Illuminate\Http\Response
      */
     public function show(Person $person)
@@ -68,19 +68,19 @@ class PersonController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePersonRequest $request
-     * @param  \App\Models\Person                     $person
+     * @param  \App\Http\Requests\UpdatePersonRequest  $request
+     * @param  \App\Models\Person  $person
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Person $person)
     {
         $validated = $request->validate([
-            'name'        => 'string|required',
+            'name' => 'string|required',
             'description' => 'string|nullable',
-            'phone'       => 'string|nullable',
-            'email'       => 'string|nullable',
-            'image'       => 'sometimes',
-            'image.id'    => 'sometimes|exists:files,id',
+            'phone' => 'string|nullable',
+            'email' => 'string|nullable',
+            'image' => 'sometimes',
+            'image.id' => 'sometimes|exists:files,id',
         ]);
 
         if ($request->image) {
@@ -106,7 +106,7 @@ class PersonController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Person        $person
+     * @param  \App\Models\Person  $person
      * @return \Illuminate\Http\Response
      */
     public function destroy(Person $person)

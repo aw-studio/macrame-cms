@@ -20,18 +20,18 @@ interface AttachableFile extends File
     /**
      * Attach a file to the model.
      *
-     * @param  Collection|Model $model
-     * @param  mixed            $collection
-     * @param  array            $attributes
+     * @param  Collection|Model  $model
+     * @param  mixed  $collection
+     * @param  array  $attributes
      * @return void
      */
-    public function attach(Collection | Model $model, ?string $collection = null, array $attriutes = []): void;
+    public function attach(Collection|Model $model, ?string $collection = null, array $attriutes = []): void;
 
     /**
      * Detach a file from the given model('s).
      *
-     * @param  Collection|Model $model
+     * @param  Collection|Model  $model
      * @return void
      */
-    public function detach(Collection | Model $model): void;
+    public function detach(Collection|Model $model): void;
 }

@@ -13,7 +13,7 @@ class LinkController
     /**
      * Get link items.
      *
-     * @param  Request                     $request
+     * @param  Request  $request
      * @return AnonymousResourceCollection
      */
     public function __invoke(Request $request)

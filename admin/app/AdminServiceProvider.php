@@ -3,7 +3,6 @@
 namespace Admin;
 
 use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class AdminServiceProvider extends ServiceProvider
@@ -25,7 +24,7 @@ class AdminServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::addNamespace('admin', base_path() . '/admin/resources/views');
+        View::addNamespace('admin', base_path().'/admin/resources/views');
         $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
     }

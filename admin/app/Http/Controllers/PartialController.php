@@ -11,15 +11,15 @@ class PartialController
     /**
      * Display the specified resource.
      *
-     * @param  \Admin\Ui\Page            $page
-     * @param  \App\Models\Partial       $partial
+     * @param  \Admin\Ui\Page  $page
+     * @param  \App\Models\Partial  $partial
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, $template)
     {
         $partial = Partial::firstOrCreate([
             'template' => $template,
-            'name'     => ucfirst($template),
+            'name' => ucfirst($template),
         ]);
 
         return PartialResource::make($partial);
@@ -28,8 +28,8 @@ class PartialController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\Request $request
-     * @param  \App\Models\Partial        $partial
+     * @param  \App\Http\Requests\Request  $request
+     * @param  \App\Models\Partial  $partial
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Partial $partial)

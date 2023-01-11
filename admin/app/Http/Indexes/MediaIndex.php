@@ -11,14 +11,14 @@ class MediaIndex extends Index
     protected $defaultPerPage = 50;
 
     protected $mimeTypes = [
-        'images'    => ['image/%'],
+        'images' => ['image/%'],
         'documents' => ['application/%'],
     ];
 
     /**
      * Handle search.
      *
-     * @param  Builder $query
+     * @param  Builder  $query
      * @param  string  $search
      * @return void
      */
@@ -33,8 +33,8 @@ class MediaIndex extends Index
     /**
      * Apply filter to the query.
      *
-     * @param  Builder    $query
-     * @param  Collection $filters
+     * @param  Builder  $query
+     * @param  Collection  $filters
      * @return void
      */
     public function filter(Builder $query, Collection $filters)
@@ -75,8 +75,8 @@ class MediaIndex extends Index
     /**
      * Apply orders to the query.
      *
-     * @param  Builder    $query
-     * @param  Collection $sort
+     * @param  Builder  $query
+     * @param  Collection  $sort
      * @return void
      */
     public function sort(Builder $query, Collection $sort)

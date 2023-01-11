@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Admin\Support\Resolver;
 
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
@@ -10,7 +9,7 @@ class LinkResolver
     /**
      * Resolve url from the given link.
      *
-     * @param  string $link
+     * @param  string  $link
      * @return void
      */
     public static function urlFromLink(string $link)

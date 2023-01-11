@@ -14,8 +14,8 @@ class SystemUserController
     /**
      * User index page.
      *
-     * @param  Request   $request
-     * @param  UserIndex $index
+     * @param  Request  $request
+     * @param  UserIndex  $index
      * @return UserIndex
      */
     public function index(Request $request, SystemUserIndex $index)
@@ -30,15 +30,15 @@ class SystemUserController
     /**
      * Update the given system user.
      *
-     * @param  Request $request
-     * @param  User    $user
+     * @param  Request  $request
+     * @param  User  $user
      * @return void
      */
     public function update(Request $request, User $user)
     {
         $validated = $request->validate([
-            'name'     => 'required|string',
-            'email'    => 'required|email',
+            'name' => 'required|string',
+            'email' => 'required|email',
             'password' => 'sometimes|string',
             'is_admin' => 'required|boolean',
         ]);
@@ -49,14 +49,14 @@ class SystemUserController
     /**
      * Create a new system user.
      *
-     * @param  Request $request
+     * @param  Request  $request
      * @return void
      */
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name'     => 'required|string',
-            'email'    => 'required|email',
+            'name' => 'required|string',
+            'email' => 'required|email',
             'password' => 'required|string',
             'is_admin' => 'required|boolean',
         ]);
@@ -73,8 +73,8 @@ class SystemUserController
     /**
      * Show the given user.
      *
-     * @param  Request            $request
-     * @param  User               $user
+     * @param  Request  $request
+     * @param  User  $user
      * @return SystemUserResource
      */
     public function show(Request $request, User $user)
@@ -86,7 +86,7 @@ class SystemUserController
      * Delete a given user.
      *
      * @param  Request  $request
-     * @param  User     $user
+     * @param  User  $user
      * @return Response
      */
     public function destroy(Request $request, User $user)

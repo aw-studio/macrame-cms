@@ -13,8 +13,8 @@ class MenuItemTreeController
     /**
      * Get menu item-tree.
      *
-     * @param  Request                     $request
-     * @param  Menu                        $menu
+     * @param  Request  $request
+     * @param  Menu  $menu
      * @return AnonymousResourceCollection
      */
     public function show(Request $request, Menu $menu)
@@ -30,8 +30,8 @@ class MenuItemTreeController
     /**
      * Update the order of the menu item-tree.
      *
-     * @param  Request $request
-     * @param  Menu    $menu
+     * @param  Request  $request
+     * @param  Menu  $menu
      * @return void
      */
     public function update(Request $request, Menu $menu)

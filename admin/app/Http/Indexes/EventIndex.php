@@ -18,7 +18,7 @@ class EventIndex extends Index
     /**
      * Handle search.
      *
-     * @param  Builder $query
+     * @param  Builder  $query
      * @param  string  $search
      * @return void
      */
@@ -33,8 +33,8 @@ class EventIndex extends Index
     /**
      * Apply filter to the query.
      *
-     * @param  Builder    $query
-     * @param  Collection $filters
+     * @param  Builder  $query
+     * @param  Collection  $filters
      * @return void
      */
     public function filter(Builder $query, Collection $filters)
@@ -44,8 +44,8 @@ class EventIndex extends Index
     /**
      * Apply orders to the query.
      *
-     * @param  Builder    $query
-     * @param  Collection $sort
+     * @param  Builder  $query
+     * @param  Collection  $sort
      * @return void
      */
     public function sort(Builder $query, Collection $sort)

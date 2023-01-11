@@ -14,7 +14,7 @@ class AnnouncementController
     /**
      * Get Page items.
      *
-     * @param  Page $page
+     * @param  Page  $page
      * @return Page
      */
     public function index(Request $request, AnnouncementIndex $index)
@@ -31,19 +31,19 @@ class AnnouncementController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request                   $request
+     * @param  Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'attributes'       => 'array',
+            'attributes' => 'array',
             'attributes.title' => 'required',
-            'slug'             => 'required|string|unique:announcements,slug',
-            'publish_at'       => 'sometimes|date|nullable',
-            'unpublish_at'     => 'sometimes|date|nullable',
-            'feature_until'    => 'sometimes|date|nullable',
-            'is_pinned'        => 'sometimes|boolean',
+            'slug' => 'required|string|unique:announcements,slug',
+            'publish_at' => 'sometimes|date|nullable',
+            'unpublish_at' => 'sometimes|date|nullable',
+            'feature_until' => 'sometimes|date|nullable',
+            'is_pinned' => 'sometimes|boolean',
         ]);
 
         // Enforce sluggified slug
@@ -75,20 +75,20 @@ class AnnouncementController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request                   $request
+     * @param  Request  $request
      * @param  \App\Models\Announcement  $announcement
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Announcement $announcement)
     {
         $validated = $request->validate([
-            'attributes'    => 'array',
-            'content'       => 'array',
-            'slug'          => 'sometimes|string|unique:announcements,slug',
-            'publish_at'    => 'sometimes|date|nullable',
-            'unpublish_at'  => 'sometimes|date|nullable',
+            'attributes' => 'array',
+            'content' => 'array',
+            'slug' => 'sometimes|string|unique:announcements,slug',
+            'publish_at' => 'sometimes|date|nullable',
+            'unpublish_at' => 'sometimes|date|nullable',
             'feature_until' => 'sometimes|date|nullable',
-            'is_pinned'     => 'sometimes|boolean',
+            'is_pinned' => 'sometimes|boolean',
         ]);
 
         $announcement->update($validated);
