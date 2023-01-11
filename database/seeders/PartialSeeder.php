@@ -15,8 +15,8 @@ class PartialSeeder extends Seeder
     public function run()
     {
         Partial::create([
-            'name'       => 'Header',
-            'template'   => 'header',
+            'name' => 'Header',
+            'template' => 'header',
             'attributes' => [
                 'logo' => [
                     'id' => 1,
@@ -24,8 +24,8 @@ class PartialSeeder extends Seeder
             ],
         ]);
         Partial::create([
-            'name'       => 'Footer',
-            'template'   => 'footer',
+            'name' => 'Footer',
+            'template' => 'footer',
             'attributes' => [
                 'email' => 'test@test.com',
                 'phone' => '123456789',

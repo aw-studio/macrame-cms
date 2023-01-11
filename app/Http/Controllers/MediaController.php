@@ -11,7 +11,7 @@ class MediaController extends Controller
     /**
      * Get media conversions.
      *
-     * @param  Request $request
+     * @param  Request  $request
      * @param  string  $id
      * @param  string  $file
      * @return void

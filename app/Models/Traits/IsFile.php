@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Models\Traits;
 
 use Illuminate\Contracts\Filesystem\Filesystem;
@@ -16,8 +15,8 @@ trait IsFile
     /**
      * Create a new file model from the uploaded file.
      *
-     * @param  UploadedFile $file
-     * @param  array        $attributes
+     * @param  UploadedFile  $file
+     * @param  array  $attributes
      * @return static
      */
     public static function createFromUploadedFile(UploadedFile $file, array $attributes = []): static
@@ -27,7 +26,7 @@ trait IsFile
                 'filepath' => Str::uuid(),
                 'filename' => $file->getClientOriginalName(),
                 'mimetype' => $file->getClientMimeType(),
-                'size'     => $file->getSize(),
+                'size' => $file->getSize(),
             ], $attributes));
 
             $model->setFilepath($model->getKey());

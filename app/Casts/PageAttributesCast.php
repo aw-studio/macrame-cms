@@ -14,7 +14,7 @@ class PageAttributesCast extends ContentCast
     /**
      * Parse items.
      *
-     * @param  array $items
+     * @param  array  $items
      * @return $this
      */
     public function parse()
@@ -31,8 +31,8 @@ class PageAttributesCast extends ContentCast
 
         $this->items = match ((string) $this->model->template) {
             'default' => $this->defaultTemplate($this->items),
-            'home'    => $this->homeTemplate($this->items),
-            default   => $this->items
+            'home' => $this->homeTemplate($this->items),
+            default => $this->items
         };
 
         // For any item, we want to make sure routes are replaced with actual links

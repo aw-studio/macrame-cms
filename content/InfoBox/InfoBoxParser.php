@@ -17,7 +17,7 @@ class InfoBoxParser implements Parser
     /**
      * Create new Parser instance.
      *
-     * @param  array $value
+     * @param  array  $value
      * @return void
      */
     public function __construct(

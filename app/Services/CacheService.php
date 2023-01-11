@@ -24,7 +24,7 @@ class CacheService
     /**
      * Create new CacheService instance.
      *
-     * @param  Cache $cache
+     * @param  Cache  $cache
      * @return void
      */
     public function __construct(
@@ -36,9 +36,9 @@ class CacheService
     /**
      * Get an item from the cache, or execute the given Closure and store the result.
      *
-     * @param  array   $classes
+     * @param  array  $classes
      * @param  string  $key
-     * @param  Closure $closure
+     * @param  Closure  $closure
      * @return mixed
      */
     public function remember(array $classes, $key, Closure $closure)
@@ -53,14 +53,13 @@ class CacheService
     /**
      * Forget all keys associated with the given class name.
      *
-     * @param  string $class  The class for which all caches should be forgotten
-     * @param  string $needle Optional keyword to match only specific cache keys
+     * @param  string  $class  The class for which all caches should be forgotten
+     * @param  string  $needle Optional keyword to match only specific cache keys
      * @return void
      */
     public function forget($class, string $needle = null)
     {
         $keys = $this->cache->get($this->mappingKey, [])[$class] ?? [];
-
 
         foreach ($keys as $key) {
             if (! $needle || str_contains($key, $needle)) {
@@ -73,7 +72,7 @@ class CacheService
      * Remember classes key mappings.
      *
      * @param  array  $classes
-     * @param  string $key
+     * @param  string  $key
      * @return void
      */
     protected function rememberClassesKeyMappings(array $classes, $key)

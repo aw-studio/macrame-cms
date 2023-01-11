@@ -9,7 +9,7 @@ class FlushDatabaseAction
     public function execute()
     {
         Artisan::call('migrate:fresh', [
-            '--seed'  => true,
+            '--seed' => true,
             '--force' => true,
         ]);
         Artisan::call('cache:clear');

@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\Traits\HasFiles;
 use App\Casts\EventAttributesCast;
+use App\Models\Traits\HasFiles;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -31,8 +31,8 @@ class Event extends Model
      */
     protected $casts = [
         'attributes' => EventAttributesCast::class,
-        'starts_at'  => 'datetime',
-        'ends_at'    => 'datetime',
+        'starts_at' => 'datetime',
+        'ends_at' => 'datetime',
     ];
 
     public function scopeSearch(Builder $query, string $term)

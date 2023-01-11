@@ -33,17 +33,17 @@ class PageController extends Controller
     /**
      * Resolve the page template.
      *
-     * @param  Page   $page
+     * @param  Page  $page
      * @return string
      */
     protected function resolveTemplate(Page $page): string
     {
         return match ((string) $page->template) {
-            'home'          => 'Pages/Home',
+            'home' => 'Pages/Home',
             'announcements' => 'Pages/Announcements',
-            'events'        => 'Pages/Events',
-            'contact'       => 'Pages/Contact',
-            default         => 'Pages/Show',
+            'events' => 'Pages/Events',
+            'contact' => 'Pages/Contact',
+            default => 'Pages/Show',
         };
     }
 
@@ -51,9 +51,9 @@ class PageController extends Controller
     {
         return Inertia::render('Announcements/Show', [
             'announcement' => (new AnnouncementResource($announcement))->toArray($request),
-            'page'         => [
+            'page' => [
                 'meta' => [
-                    'title'       => $announcement['title'],
+                    'title' => $announcement['title'],
                     'description' => 'Lorem ipsum dolor',
                 ],
             ],
@@ -64,9 +64,9 @@ class PageController extends Controller
     {
         return Inertia::render('Events/Show', [
             'event' => (new EventResource($event))->toArray($request),
-            'page'  => [
+            'page' => [
                 'meta' => [
-                    'title'       => $event['title'],
+                    'title' => $event['title'],
                     'description' => 'Lorem ipsum dolor',
                 ],
             ],
@@ -76,8 +76,8 @@ class PageController extends Controller
     /**
      * Determines whether a page can be viewed, aborts 404 otherwise.
      *
-     * @param  Request $request
-     * @param  Page    $page
+     * @param  Request  $request
+     * @param  Page  $page
      * @return void
      */
     protected function abortIfPageCannotBeViewed(Request $request, Page $page)

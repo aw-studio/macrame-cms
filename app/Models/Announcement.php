@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
+use App\Casts\AnnouncementAttributesCast;
 use App\Casts\ContentCast;
 use App\Models\Traits\HasFiles;
-use Illuminate\Database\Eloquent\Model;
-use App\Casts\AnnouncementAttributesCast;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Announcement extends Model
 {
@@ -36,19 +36,19 @@ class Announcement extends Model
      * @var array
      */
     protected $casts = [
-        'attributes'    => AnnouncementAttributesCast::class,
-        'content'       => ContentCast::class,
-        'publish_at'    => 'datetime',
-        'unpublish_at'  => 'datetime',
+        'attributes' => AnnouncementAttributesCast::class,
+        'content' => ContentCast::class,
+        'publish_at' => 'datetime',
+        'unpublish_at' => 'datetime',
         'feature_until' => 'datetime',
-        'is_pinned'     => 'bool',
+        'is_pinned' => 'bool',
     ];
 
     /**
      * Default attribute values.
      */
     protected $attributes = [
-        'content'    => '[]',
+        'content' => '[]',
         'attributes' => '[]',
     ];
 
@@ -86,8 +86,8 @@ class Announcement extends Model
      * Retrieve the model for a bound value but without
      * the global defaultAnnounceements scope.
      *
-     * @param  mixed                                    $value
-     * @param  string|null                              $field
+     * @param  mixed  $value
+     * @param  string|null  $field
      * @return \Illuminate\Database\Eloquent\Model|null
      */
     public function resolveRouteBinding($value, $field = null)

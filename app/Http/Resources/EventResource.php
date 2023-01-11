@@ -21,19 +21,19 @@ class EventResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request                                        $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
     {
         return array_merge(
             [
-                'id'        => $this->id,
-                'slug'      => $this->slug,
-                'name'      => $this->name,
-                'fullslug'  => $this->getFullSlug(),
+                'id' => $this->id,
+                'slug' => $this->slug,
+                'name' => $this->name,
+                'fullslug' => $this->getFullSlug(),
                 'starts_at' => $this->starts_at ? DateTimeResource::make($this->starts_at)->toArray($request) : null,
-                'ends_at'   => $this->ends_at ? DateTimeResource::make($this->ends_at)->toArray($request) : null,
+                'ends_at' => $this->ends_at ? DateTimeResource::make($this->ends_at)->toArray($request) : null,
             ],
             $this->attributes->parse()
         );

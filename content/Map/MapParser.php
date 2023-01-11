@@ -30,7 +30,7 @@ class MapParser implements Parser
     /**
      * Create new Parser instance.
      *
-     * @param  array $value
+     * @param  array  $value
      * @return void
      */
     public function __construct(
@@ -58,8 +58,8 @@ class MapParser implements Parser
     public function toArray()
     {
         return array_merge($this->value, [
-            'lat'  => $this->lat,
-            'lng'  => $this->lng,
+            'lat' => $this->lat,
+            'lng' => $this->lng,
             'zoom' => $this->zoom,
         ]);
     }

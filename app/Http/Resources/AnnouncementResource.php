@@ -20,18 +20,18 @@ class AnnouncementResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request                                        $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
     {
         return array_merge(
             [
-                'id'         => $this->id,
-                'slug'       => $this->slug,
+                'id' => $this->id,
+                'slug' => $this->slug,
                 'publish_at' => DateTimeResource::make($this->publish_at)->toArray($request),
-                'fullslug'   => $this->getFullSlug(),
-                'content'    => $this->content->parse(),
+                'fullslug' => $this->getFullSlug(),
+                'content' => $this->content->parse(),
             ],
             $this->attributes->parse()
         );

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Models\Traits;
 
 use Illuminate\Database\Eloquent\Model;
@@ -63,7 +62,7 @@ trait IsAttachableFile
     /**
      * File attachments relationship.
      *
-     * @param  string        $model
+     * @param  string  $model
      * @return BelongsToMany
      */
     public function attached(string $model): BelongsToMany
@@ -83,12 +82,12 @@ trait IsAttachableFile
     /**
      * Attach a file to the model.
      *
-     * @param  Collection|Model $model
-     * @param  mixed            $collection
-     * @param  array            $attributes
+     * @param  Collection|Model  $model
+     * @param  mixed  $collection
+     * @param  array  $attributes
      * @return void
      */
-    public function attach(Collection | Model $model, $collection = null, $attributes = []): void
+    public function attach(Collection|Model $model, $collection = null, $attributes = []): void
     {
         if ($model instanceof Collection) {
             $model->each(fn (Model $m) => $this->attach($m, $collection, $attributes));
@@ -99,7 +98,7 @@ trait IsAttachableFile
         $this->file_attachments()
             ->create(array_merge($attributes, [
                 'model_type' => get_class($model),
-                'model_id'   => $model->getKey(),
+                'model_id' => $model->getKey(),
                 'collection' => $collection,
             ]));
     }
@@ -107,10 +106,10 @@ trait IsAttachableFile
     /**
      * Detach a file from the given model('s).
      *
-     * @param  Collection|Model $model
+     * @param  Collection|Model  $model
      * @return void
      */
-    public function detach(Collection | Model $model): void
+    public function detach(Collection|Model $model): void
     {
         if ($model instanceof Collection) {
             $model->each(fn (Model $m) => $this->detach($m));
@@ -121,7 +120,7 @@ trait IsAttachableFile
         $this->file_attachments()
             ->where([
                 'model_type' => get_class($model),
-                'model_id'   => $model->getKey(),
+                'model_id' => $model->getKey(),
             ])
             ->delete();
     }

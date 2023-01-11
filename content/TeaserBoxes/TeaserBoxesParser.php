@@ -17,7 +17,7 @@ class TeaserBoxesParser implements Parser
     /**
      * Create new Parser instance.
      *
-     * @param  array $value
+     * @param  array  $value
      * @return void
      */
     public function __construct(
@@ -38,7 +38,7 @@ class TeaserBoxesParser implements Parser
 
             $box = collect([
                 'title' => $item['title'],
-                'link'  => $link,
+                'link' => $link,
             ]);
 
             return $box;

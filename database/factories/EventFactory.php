@@ -17,15 +17,15 @@ class EventFactory extends Factory
     public function definition()
     {
         return [
-            'slug'       => fake()->slug(2),
+            'slug' => fake()->slug(2),
             'attributes' => [
-                'title'    => fake()->text(40),
-                'excerpt'  => fake()->text(200),
-                'text'     => fake()->text(800),
+                'title' => fake()->text(40),
+                'excerpt' => fake()->text(200),
+                'text' => fake()->text(800),
                 'location' => fake()->address(),
             ],
             'starts_at' => fake()->dateTimeBetween('-4 months', '+4 months'),
-            'ends_at'   => fake()->boolean() ? fake()->dateTimeBetween('-4 months', '+4 months') : null,
+            'ends_at' => fake()->boolean() ? fake()->dateTimeBetween('-4 months', '+4 months') : null,
         ];
     }
 }

@@ -34,9 +34,9 @@ class MenuItem extends Model implements Tree
      * @var array
      */
     protected $casts = [
-        'link'               => MenuLinkCast::class,
-        'new_tab'            => 'boolean',
-        'is_group'           => 'boolean',
+        'link' => MenuLinkCast::class,
+        'new_tab' => 'boolean',
+        'is_group' => 'boolean',
     ];
 
     /**

@@ -18,7 +18,7 @@ class BlockParser implements Parser
     /**
      * Create new Parser instance.
      *
-     * @param  array $value
+     * @param  array  $value
      * @return void
      */
     public function __construct(
@@ -41,7 +41,7 @@ class BlockParser implements Parser
      */
     public function toArray()
     {
-        if (!$this->block) {
+        if (! $this->block) {
             return [];
         }
 

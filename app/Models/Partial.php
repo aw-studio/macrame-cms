@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\Traits\HasFiles;
 use App\Casts\PartialAttributesCast;
+use App\Models\Traits\HasFiles;
 use Illuminate\Database\Eloquent\Model;
 
 class Partial extends Model

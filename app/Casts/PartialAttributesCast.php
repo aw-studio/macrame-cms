@@ -12,7 +12,7 @@ class PartialAttributesCast extends ContentCast
     /**
      * Parse items.
      *
-     * @param  array $items
+     * @param  array  $items
      * @return $this
      */
     public function parse()
@@ -20,10 +20,10 @@ class PartialAttributesCast extends ContentCast
         if (! is_array($this->items)) {
             return $this;
         }
-        $this->items = match ((string)$this->model->template) {
+        $this->items = match ((string) $this->model->template) {
             'default' => $this->defaultTemplate($this->items),
             'header' => $this->headerTemplate($this->items),
-            default   => $this->items
+            default => $this->items
         };
 
         return $this;

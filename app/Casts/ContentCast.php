@@ -2,21 +2,21 @@
 
 namespace App\Casts;
 
-use Content\CTA\CTAParser;
-use Content\Map\MapParser;
+use Admin\Support\Resolver\LinkResolver;
 use Content\Block\BlockParser;
 use Content\Cards\CardsParser;
+use Content\CTA\CTAParser;
+use Content\Downloads\DownloadsParser;
+use Content\GridGallery\GridGalleryParser;
+use Content\ImageCarousel\CarouselParser;
+use Content\ImageFull\ImageFullParser;
 use Content\InfoBox\InfoBoxParser;
 use Content\LogoWall\LogoWallParser;
-use Admin\Support\Resolver\LinkResolver;
-use Macrame\Content\Contracts\Parser;
-use Content\Downloads\DownloadsParser;
-use Content\ImageFull\ImageFullParser;
-use Content\TextImage\TextImageParser;
-use Content\ImageCarousel\CarouselParser;
-use Content\GridGallery\GridGalleryParser;
+use Content\Map\MapParser;
 use Content\TeaserBoxes\TeaserBoxesParser;
+use Content\TextImage\TextImageParser;
 use Macrame\Content\ContentCast as BaseContentCast;
+use Macrame\Content\Contracts\Parser;
 
 class ContentCast extends BaseContentCast
 {
@@ -26,20 +26,20 @@ class ContentCast extends BaseContentCast
      * @var array
      */
     protected $parsers = [
-        'block'          => BlockParser::class,
-        'image_small'    => ImageFullParser::class,
-        'image_full'     => ImageFullParser::class,
-        'text_image'     => TextImageParser::class,
-        'info_section'   => TextImageParser::class,
-        'logo_wall'      => LogoWallParser::class,
+        'block' => BlockParser::class,
+        'image_small' => ImageFullParser::class,
+        'image_full' => ImageFullParser::class,
+        'text_image' => TextImageParser::class,
+        'info_section' => TextImageParser::class,
+        'logo_wall' => LogoWallParser::class,
         'image_carousel' => CarouselParser::class,
-        'teaser_boxes'   => TeaserBoxesParser::class,
-        'cta'            => CTAParser::class,
-        'map'            => MapParser::class,
-        'info_box'       => InfoBoxParser::class,
-        'cards'          => CardsParser::class,
-        'downloads'      => DownloadsParser::class,
-        'grid_gallery'   => GridGalleryParser::class,
+        'teaser_boxes' => TeaserBoxesParser::class,
+        'cta' => CTAParser::class,
+        'map' => MapParser::class,
+        'info_box' => InfoBoxParser::class,
+        'cards' => CardsParser::class,
+        'downloads' => DownloadsParser::class,
+        'grid_gallery' => GridGalleryParser::class,
     ];
 
     /**
@@ -70,7 +70,7 @@ class ContentCast extends BaseContentCast
     /**
      * Parse a single item.
      *
-     * @param  array $item
+     * @param  array  $item
      * @return array $item
      */
     protected function parseItem($item)
@@ -94,9 +94,9 @@ class ContentCast extends BaseContentCast
     /**
      * Parse item value.
      *
-     * @param array       $value
-     * @param string|null $parser
-     * @param bool        $toArray
+     * @param  array  $value
+     * @param  string|null  $parser
+     * @param  bool  $toArray
      * @return
      */
     protected function parseItemValue(array $value, ?string $parser)

@@ -10,7 +10,7 @@ class EventAttributesCast extends ContentCast
     /**
      * Parse items.
      *
-     * @param  array $items
+     * @param  array  $items
      * @return $this
      */
     public function parse()

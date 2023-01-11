@@ -16,9 +16,9 @@ class PageTemplateCast extends TemplateCast
      * @var array
      */
     protected $parsers = [
-        'home'          => HomeTemplateLoader::class,
+        'home' => HomeTemplateLoader::class,
         'announcements' => AnnouncementsTemplateLoader::class,
-        'events'        => EventsTemplateLoader::class,
-        'contact'       => ContactTemplateLoader::class,
+        'events' => EventsTemplateLoader::class,
+        'contact' => ContactTemplateLoader::class,
     ];
 }

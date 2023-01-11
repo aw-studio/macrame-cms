@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Models\Traits;
 
 use Closure;
@@ -31,7 +30,7 @@ trait IsPage
     /**
      * Get the page model from the given request.
      *
-     * @param  Request $request
+     * @param  Request  $request
      * @return self
      */
     public static function fromRequestOrFail(Request $request)
@@ -62,7 +61,7 @@ trait IsPage
      *
      * @return void
      */
-    public function getRouteAction(): string | Closure
+    public function getRouteAction(): string|Closure
     {
         return $this->controller;
     }
