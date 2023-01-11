@@ -16,5 +16,5 @@ Route::group([
 });
 
 Route::get('/admin/{any?}', function () {
-    return view('admin::app');
+    return view('admin::index');
 })->where('any', '.*');

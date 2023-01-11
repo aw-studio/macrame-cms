@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import vue from '@vitejs/plugin-vue'
-import path from 'path'
+import path from 'path';
+import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
     plugins: [
@@ -22,11 +22,10 @@ export default defineConfig({
             },
         }),
     ],
-    base: '/',
     resolve: {
         alias: {
             '@': path.resolve(__dirname, './admin/resources/app'),
-            '@content': path.resolve(__dirname, './content')
-        }
+            '@content': path.resolve(__dirname, './content'),
+        },
     },
 });
