@@ -10,23 +10,15 @@
         "resolveJsonModule": true,
         "isolatedModules": true,
         "esModuleInterop": true,
-        "lib": [
-            "esnext",
-            "dom"
-        ],
+        "lib": ["esnext", "dom"],
         "skipLibCheck": true,
         "paths": {
-            "@/*": [
-                "./admin/resources/app/*"
-            ],
+            "@/*": ["./admin/resources/app/*"],
+            "@content/*": ["./content/*"]
         }
     },
-    "exclude": [
-        "node_modules"
-    ],
-    "files": [
-        "shims-vue.d.ts",
-    ],
+    "exclude": ["node_modules"],
+    "files": ["shims-vue.d.ts"],
     "include": [
         "resources/js/**/*.ts",
         "resources/js/**/*.d.ts",
@@ -35,5 +27,5 @@
         "./admin/resources/app/**/*.ts",
         "./admin/resources/app/**/*.d.ts",
         "./admin/resources/app/**/*.vue"
-    ],
+    ]
 }

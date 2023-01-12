@@ -1,0 +1,9 @@
+<template>
+    <Drawer title="{{Name}}" hint="{{Name}}" color="orange">
+        <IconAlignLeft class="w-4 h-4" />
+    </Drawer>
+</template>
+<script lang="ts" setup>
+import Drawer from '@/modules/content/components/BaseDrawer.vue';
+import IconAlignLeft from '@/ui/Icons/IconAlignLeft.vue';
+</script>
