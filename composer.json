@@ -1,10 +1,10 @@
 {
-    "name": "laravel/laravel",
+    "name": "aw-studio/macrame-cms",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "wip.",
     "keywords": [
-        "framework",
-        "laravel"
+        "laravel",
+        "cms"
     ],
     "license": "MIT",
     "require": {
