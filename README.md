@@ -1,4 +1,5 @@
-![Macrame](https://user-images.githubusercontent.com/36259611/212025288-217def6a-ff54-46cd-b0f9-bf25db910a59.png)
+![image](https://user-images.githubusercontent.com/36259611/212055535-4a4c3617-0db7-4d6e-b068-b42b8bf9027e.svg)
+
 
 ## Setup
 
@@ -28,3 +29,4 @@ You should now be able to visit `your-website.test/admin` and login with default
 username: admin
 password: secret
 ```
+
