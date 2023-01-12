@@ -49,7 +49,10 @@
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
         "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "sed -i '' \"s/APP_URL=http\\:\\/\\/localhost/APP_URL=http\\:\\/\\/${PWD##*/}.test/\" ${PWD}/.env",
+            "DIRNAME=${PWD##*/} && sed -i '' \"s/DB_DATABASE=laravel/DB_DATABASE=${DIRNAME/-/_}/\" ${PWD}/.env",
+            "DIRNAME=${PWD##*/} && sed -i '' \"s/DB_DATABASE=laravel/DB_DATABASE=${DIRNAME/-/_}/\" ${PWD}/.env.example"
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
