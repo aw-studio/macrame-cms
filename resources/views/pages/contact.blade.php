@@ -1,4 +1,7 @@
 <x-default-layout>
+    <x-slot name="meta">
+        <x-meta :page="$page"/>
+    </x-slot>
 {{--
 <Image
             :image="page.attributes.header"

@@ -1,4 +1,7 @@
 <x-default-layout>
+    <x-slot name="meta">
+        <x-meta :page="$page"/>
+    </x-slot>
     {{-- <Image
         :src="$page->attributes->header->url"
         v-if="$page->attributes?->header?->url"
