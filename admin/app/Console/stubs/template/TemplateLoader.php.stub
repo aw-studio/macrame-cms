@@ -2,10 +2,7 @@
 
 namespace App\Casts\Loaders;
 
-use App\Http\Resources\PageResource;
-use Inertia\Inertia;
-
-class HomeTemplateLoader extends BaseTemplateLoader
+class {{Name}}TemplateLoader extends BaseTemplateLoader
 {
 
     /**
@@ -35,6 +32,6 @@ class HomeTemplateLoader extends BaseTemplateLoader
      */
     public function view(): string
     {
-        return 'pages.home';
+        return 'pages.{{name}}';
     }
 }

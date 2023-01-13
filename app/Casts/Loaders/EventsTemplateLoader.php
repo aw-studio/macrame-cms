@@ -48,4 +48,12 @@ class EventsTemplateLoader extends BaseTemplateLoader
             'events' => $this->events,
         ];
     }
+
+    /**
+     * Get the view / contents that represents the template.
+     */
+    public function view(): string
+    {
+        return 'pages.events';
+    }
 }

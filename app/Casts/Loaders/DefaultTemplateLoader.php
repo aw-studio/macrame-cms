@@ -2,11 +2,13 @@
 
 namespace App\Casts\Loaders;
 
-use App\Http\Resources\PageResource;
-use Inertia\Inertia;
+use Admin\Http\Indexes\EventIndex;
+use App\Http\Resources\EventResource;
+use App\Models\Event;
 
-class HomeTemplateLoader extends BaseTemplateLoader
+class DefaultTemplateLoader extends BaseTemplateLoader
 {
+
 
     /**
      * Load the data.
@@ -15,7 +17,7 @@ class HomeTemplateLoader extends BaseTemplateLoader
      */
     public function load()
     {
-        //
+
     }
 
     /**
@@ -26,7 +28,6 @@ class HomeTemplateLoader extends BaseTemplateLoader
     public function toArray()
     {
         return [
-            // ...
         ];
     }
 
@@ -35,6 +36,6 @@ class HomeTemplateLoader extends BaseTemplateLoader
      */
     public function view(): string
     {
-        return 'pages.home';
+        return 'pages.default';
     }
 }

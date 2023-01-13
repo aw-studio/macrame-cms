@@ -48,4 +48,12 @@ class ContactTemplateLoader extends BaseTemplateLoader
             'people' => $this->people,
         ];
     }
+
+    /**
+     * Get the view / contents that represents the template.
+     */
+    public function view(): string
+    {
+        return 'pages.contact';
+    }
 }

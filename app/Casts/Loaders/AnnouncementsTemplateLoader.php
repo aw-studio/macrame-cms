@@ -41,4 +41,12 @@ class AnnouncementsTemplateLoader extends BaseTemplateLoader
             'announcements' => $this->announcements,
         ];
     }
+
+    /**
+     * Get the view / contents that represents the template.
+     */
+    public function view(): string
+    {
+        return 'pages.announcements';
+    }
 }

@@ -19,6 +19,12 @@ class PageAttributesCast extends ContentCast
      */
     public function parse()
     {
+        static $parsed = false;
+
+        if($parsed) {
+            return $this;
+        }
+
         if (! is_array($this->items)) {
             return $this;
         }
@@ -45,6 +51,8 @@ class PageAttributesCast extends ContentCast
                 return '"'.LinkResolver::urlFromLink($match[1]).'"';
             }, $value);
         });
+
+        $parsed = true;
 
         return $this;
     }
@@ -126,4 +134,17 @@ class PageAttributesCast extends ContentCast
 
         return $items;
     }
+
+    public function __get($key)
+    {
+        $this->parse();
+
+        if (!array_key_exists($key, $this->items)) {
+            return null;
+        }
+
+        return $this->items[$key];
+    }
+
+
 }
