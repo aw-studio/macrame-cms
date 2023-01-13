@@ -20,6 +20,7 @@
             <main class="mt-[90px] lg:mt-[189px]">
                 {{ $slot }}
             </main>
+            <x-footer />
         </div>
     </body>
 </html>
