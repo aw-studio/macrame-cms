@@ -23,7 +23,7 @@ class TextImageComponent extends Component
     public function render()
     {
         return view('content::text_image', [
-            'content' => $this->content
+            'content' => $this->content,
         ]);
     }
 }

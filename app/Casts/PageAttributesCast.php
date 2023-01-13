@@ -2,7 +2,6 @@
 
 namespace App\Casts;
 
-use App\Casts\Resolver;
 use App\Http\Resources\ImageResource;
 use App\Http\Resources\Wrapper\Image;
 use App\Models\File;
@@ -21,7 +20,7 @@ class PageAttributesCast extends ContentCast
     {
         static $parsed = false;
 
-        if($parsed) {
+        if ($parsed) {
             return $this;
         }
 
@@ -139,12 +138,10 @@ class PageAttributesCast extends ContentCast
     {
         $this->parse();
 
-        if (!array_key_exists($key, $this->items)) {
+        if (! array_key_exists($key, $this->items)) {
             return null;
         }
 
         return $this->items[$key];
     }
-
-
 }

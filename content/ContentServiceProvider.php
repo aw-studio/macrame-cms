@@ -2,11 +2,11 @@
 
 namespace Content;
 
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 
 class ContentServiceProvider extends ServiceProvider
 {
@@ -27,7 +27,6 @@ class ContentServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
         $directories = File::directories(base_path('content'));
 
         // Iterate over each directory
@@ -36,14 +35,14 @@ class ContentServiceProvider extends ServiceProvider
             $files = File::files($directory);
             // Iterate over each file
             foreach ($files as $file) {
-                if(!str_contains($filename = $file->getFilename(), 'Component')){
+                if (! str_contains($filename = $file->getFilename(), 'Component')) {
                     continue;
                 }
 
                 $componentName = str_replace('.php', '', $filename);
 
-                $moduleName = (string)  Str::of($componentName)->replaceLast('Component', '');
-                $class = 'Content\\' . $moduleName . '\\' . $componentName;
+                $moduleName = (string) Str::of($componentName)->replaceLast('Component', '');
+                $class = 'Content\\'.$moduleName.'\\'.$componentName;
                 $componentName = (string) Str::of($moduleName)->snake();
 
                 // Add the current directory to the view namespace
@@ -55,6 +54,5 @@ class ContentServiceProvider extends ServiceProvider
 
         View::addNamespace('content', base_path('content'));
         Blade::component(ContentResolver::class, 'content::resolver');
-
     }
 }

@@ -2,14 +2,11 @@
 
 namespace Admin;
 
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\ServiceProvider;
-use Admin\Console\Commands\MakeCrudCommand;
 use Admin\Console\Commands\MakeContentCommand;
+use Admin\Console\Commands\MakeCrudCommand;
 use Admin\Console\Commands\MakeTemplateCommand;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider;
 
 class AdminServiceProvider extends ServiceProvider
 {

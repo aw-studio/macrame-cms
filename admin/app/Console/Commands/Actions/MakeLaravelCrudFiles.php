@@ -4,11 +4,9 @@ namespace Admin\Console\Commands\Actions;
 
 use Admin\Console\Commands\Concerns\ReplaceName;
 use Admin\Console\Commands\MakeCrudCommand;
-use Illuminate\Foundation\Console\ModelMakeCommand;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
-use Symfony\Component\Process\Process;
 
 class MakeLaravelCrudFiles
 {

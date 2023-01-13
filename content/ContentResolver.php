@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Content;
 
 use App\Casts\ContentCast;
@@ -9,6 +8,7 @@ use Illuminate\View\Component;
 class ContentResolver extends Component
 {
     public $content;
+
     /**
      * Create a new component instance.
      *

@@ -2,7 +2,6 @@
 
 namespace App\Casts;
 
-use App\Casts\Resolver;
 use Content\Block\BlockParser;
 use Content\Cards\CardsParser;
 use Content\CTA\CTAParser;
@@ -111,12 +110,11 @@ class ContentCast extends BaseContentCast
         return $p;
     }
 
-
     public function __get($key)
     {
         $this->parse();
 
-        if (!array_key_exists($key, $this->items)) {
+        if (! array_key_exists($key, $this->items)) {
             return null;
         }
 

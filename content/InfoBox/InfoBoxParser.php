@@ -2,7 +2,6 @@
 
 namespace Content\InfoBox;
 
-use App\Casts\Resolver;
 use Macrame\Content\Contracts\Parser;
 
 class InfoBoxParser implements Parser

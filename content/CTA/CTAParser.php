@@ -2,7 +2,6 @@
 
 namespace Content\CTA;
 
-use App\Casts\Resolver;
 use Macrame\Content\Contracts\Parser;
 
 class CTAParser implements Parser

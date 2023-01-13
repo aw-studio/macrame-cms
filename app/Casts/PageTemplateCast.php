@@ -2,12 +2,12 @@
 
 namespace App\Casts;
 
-use Macrame\Content\TemplateCast;
-use App\Casts\Loaders\HomeTemplateLoader;
-use App\Casts\Loaders\EventsTemplateLoader;
+use App\Casts\Loaders\AnnouncementsTemplateLoader;
 use App\Casts\Loaders\ContactTemplateLoader;
 use App\Casts\Loaders\DefaultTemplateLoader;
-use App\Casts\Loaders\AnnouncementsTemplateLoader;
+use App\Casts\Loaders\EventsTemplateLoader;
+use App\Casts\Loaders\HomeTemplateLoader;
+use Macrame\Content\TemplateCast;
 
 class PageTemplateCast extends TemplateCast
 {

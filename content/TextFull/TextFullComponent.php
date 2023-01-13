@@ -2,7 +2,6 @@
 
 namespace Content\TextFull;
 
-use App\Casts\ContentCast;
 use Illuminate\View\Component;
 
 class TextFullComponent extends Component

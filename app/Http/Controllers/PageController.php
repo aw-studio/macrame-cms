@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Menu;
-use App\Models\Page;
-use Inertia\Inertia;
-use App\Models\Event;
-use App\Models\Announcement;
-use Illuminate\Http\Request;
-use App\Http\Resources\NavResource;
-use App\Http\Resources\PageResource;
-use App\Http\Resources\EventResource;
 use App\Http\Resources\AnnouncementResource;
+use App\Http\Resources\EventResource;
+use App\Models\Announcement;
+use App\Models\Event;
+use App\Models\Page;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Inertia\Inertia;
 
 class PageController extends Controller
 {
@@ -26,9 +23,10 @@ class PageController extends Controller
         $page = Page::fromRequestOrFail($request);
 
         $this->abortIfPageCannotBeViewed($request, $page);
+
         return View::make($page->template->data()->view(), [
-            'page' => new PageResource($page),
-            'data' => (object) $page->template->data()->toArray($request),
+            'page' => $page,
+            'data' => $page->template->data(),
         ]);
     }
 

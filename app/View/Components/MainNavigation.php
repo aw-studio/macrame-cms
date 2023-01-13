@@ -4,12 +4,11 @@ namespace App\View\Components;
 
 use App\Models\Menu;
 use Illuminate\View\Component;
-use App\Http\Resources\NavResource;
 
 class MainNavigation extends Component
 {
+    public $menu;
 
-    public NavResource $menu;
     /**
      * Create a new component instance.
      *
@@ -17,9 +16,7 @@ class MainNavigation extends Component
      */
     public function __construct()
     {
-        $this->menu = new NavResource(
-            Menu::where('type', 'main')->first()->items()->whereRoot()->get()
-        );
+        $this->menu = Menu::where('type', 'main')->first()->items()->whereRoot()->get();
     }
 
     /**
@@ -29,6 +26,6 @@ class MainNavigation extends Component
      */
     public function render()
     {
-        return view('layouts.main-navigation', ['navigation' => json_decode($this->menu->toJson())]);
+        return view('layouts.main-navigation', ['navigation' => $this->menu]);
     }
 }

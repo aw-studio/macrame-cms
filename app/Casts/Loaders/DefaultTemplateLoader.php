@@ -2,14 +2,8 @@
 
 namespace App\Casts\Loaders;
 
-use Admin\Http\Indexes\EventIndex;
-use App\Http\Resources\EventResource;
-use App\Models\Event;
-
 class DefaultTemplateLoader extends BaseTemplateLoader
 {
-
-
     /**
      * Load the data.
      *
@@ -17,7 +11,6 @@ class DefaultTemplateLoader extends BaseTemplateLoader
      */
     public function load()
     {
-
     }
 
     /**

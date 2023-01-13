@@ -2,12 +2,8 @@
 
 namespace App\Casts\Loaders;
 
-use App\Http\Resources\PageResource;
-use Inertia\Inertia;
-
 class HomeTemplateLoader extends BaseTemplateLoader
 {
-
     /**
      * Load the data.
      *
