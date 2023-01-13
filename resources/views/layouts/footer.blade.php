@@ -18,8 +18,8 @@
         <ul class="flex items-center justify-end gap-10 pt-10">
             @foreach ($navigation as $entry )
             <li>
-                <a :href="entry.link" class="font-semibold text-primary">
-                    {{ $entry->name }}
+                <a href="{{$entry->link->url()}}" class="font-semibold text-primary">
+                    {{ $entry->title }}
                 </a>
             </li>
             @endforeach

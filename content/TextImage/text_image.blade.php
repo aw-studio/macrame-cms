@@ -15,7 +15,7 @@
         <div class="col-span-6">
             <!-- TODO Image -->
             @isset($content['image']['url'])
-                <img src="{{ $content['image']['url'] }}" />
+                <x-image :image="$content['image']" />
             @endisset
         </div>
     </div>
