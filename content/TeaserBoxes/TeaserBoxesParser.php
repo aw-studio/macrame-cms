@@ -2,7 +2,7 @@
 
 namespace Content\TeaserBoxes;
 
-use Admin\Support\Resolver\LinkResolver;
+use App\Casts\Resolver;
 use Macrame\Content\Contracts\Parser;
 
 class TeaserBoxesParser implements Parser

@@ -2,7 +2,7 @@
 
 namespace Content\TextImage;
 
-use Admin\Support\Resolver\LinkResolver;
+use App\Casts\Resolver;
 use App\Http\Resources\ImageResource;
 use App\Http\Resources\Wrapper\Image;
 use App\Models\File;

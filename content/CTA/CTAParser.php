@@ -2,7 +2,7 @@
 
 namespace Content\CTA;
 
-use Admin\Support\Resolver\LinkResolver;
+use App\Casts\Resolver;
 use Macrame\Content\Contracts\Parser;
 
 class CTAParser implements Parser

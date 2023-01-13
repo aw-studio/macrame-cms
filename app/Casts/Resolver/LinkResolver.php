@@ -1,6 +1,7 @@
 <?php
 
-namespace Admin\Support\Resolver;
+
+namespace App\Casts\Resolver;
 
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 

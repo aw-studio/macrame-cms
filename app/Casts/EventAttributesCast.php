@@ -2,7 +2,7 @@
 
 namespace App\Casts;
 
-use Admin\Support\Resolver\LinkResolver;
+use App\Casts\Resolver;
 use Macrame\Content\ContentCast;
 
 class EventAttributesCast extends ContentCast

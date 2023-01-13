@@ -2,7 +2,7 @@
 
 namespace Content\InfoBox;
 
-use Admin\Support\Resolver\LinkResolver;
+use App\Casts\Resolver;
 use Macrame\Content\Contracts\Parser;
 
 class InfoBoxParser implements Parser
