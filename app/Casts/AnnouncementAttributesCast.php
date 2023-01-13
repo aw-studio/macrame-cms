@@ -47,4 +47,15 @@ class AnnouncementAttributesCast extends ContentCast
             'image' => $image ? (new ImageResource($image))->toArray(request()) : null,
         ];
     }
+
+    public function __get($key)
+    {
+        $this->parse();
+
+        if (! array_key_exists($key, $this->items)) {
+            return null;
+        }
+
+        return $this->items[$key];
+    }
 }

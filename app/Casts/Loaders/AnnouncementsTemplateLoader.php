@@ -2,7 +2,6 @@
 
 namespace App\Casts\Loaders;
 
-use Admin\Http\Indexes\AnnouncementIndex;
 use App\Http\Resources\AnnouncementResource;
 use App\Models\Announcement;
 
@@ -13,7 +12,7 @@ class AnnouncementsTemplateLoader extends BaseTemplateLoader
      *
      * @var array
      */
-    protected $announcements;
+    public $announcements;
 
     /**
      * Load the data.
@@ -23,11 +22,7 @@ class AnnouncementsTemplateLoader extends BaseTemplateLoader
     public function load()
     {
         // Load announcements
-        $this->announcements = (new AnnouncementIndex())->items(
-            request(),
-            Announcement::published()->orderByDesc('publish_at'),
-            AnnouncementResource::class
-        );
+        $this->announcements = Announcement::published()->orderByDesc('publish_at')->paginate(15);
     }
 
     /**

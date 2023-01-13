@@ -2,7 +2,6 @@
 
 namespace App\Casts\Loaders;
 
-use Admin\Http\Indexes\PersonIndex;
 use App\Http\Resources\PersonResource;
 use App\Models\Person;
 
@@ -13,7 +12,7 @@ class ContactTemplateLoader extends BaseTemplateLoader
      *
      * @var array
      */
-    protected $people;
+    public $people;
 
     /**
      * Load the data.
@@ -30,11 +29,12 @@ class ContactTemplateLoader extends BaseTemplateLoader
         //     index:      PersonIndex::class,
         //     query:      fn () => Person::orderByDesc('name')
         // );
-        $this->people = (new PersonIndex())->items(
-            request(),
-            Person::orderBy('name'),
-            PersonResource::class
-        );
+        // $this->people = (new PersonIndex())->items(
+        //     request(),
+        //     Person::orderBy('name'),
+        //     PersonResource::class
+        // );
+        $this->people = Person::orderBy('name')->paginate(15);
     }
 
     /**

@@ -30,10 +30,10 @@ class PersonController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePersonRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePersonRequest $request)
+    public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string',
