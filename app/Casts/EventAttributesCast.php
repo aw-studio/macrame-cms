@@ -2,6 +2,7 @@
 
 namespace App\Casts;
 
+use App\Casts\Resolver\LinkResolver;
 use Macrame\Content\ContentCast;
 
 class EventAttributesCast extends ContentCast

@@ -2,6 +2,7 @@
 
 namespace App\Casts;
 
+use App\Casts\Resolver\LinkResolver;
 use Content\Block\BlockParser;
 use Content\Cards\CardsParser;
 use Content\CTA\CTAParser;
