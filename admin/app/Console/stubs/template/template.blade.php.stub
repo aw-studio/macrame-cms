@@ -1,0 +1,8 @@
+<x-default-layout>
+    <div class="container">
+        <h1 class="my-16">
+            {{ $page->attributes->h1}}
+        </h1>
+    </div>
+    {{-- "An unexamined life is not worth living." - Socrates --}}
+</x-default-layout>

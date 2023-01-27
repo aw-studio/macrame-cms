@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    div#app {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+}
+
+
+/* Image */
+.lazyload,
+.lazyloading {
+    filter: blur(20px);
+}
+.lazyloaded {
+    filter: blur(0px);
+}
+.lazyload-animation {
+    transition: 0.25s filter ease;
+}

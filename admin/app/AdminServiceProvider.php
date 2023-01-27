@@ -4,6 +4,7 @@ namespace Admin;
 
 use Admin\Console\Commands\MakeContentCommand;
 use Admin\Console\Commands\MakeCrudCommand;
+use Admin\Console\Commands\MakeTemplateCommand;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,6 +28,7 @@ class AdminServiceProvider extends ServiceProvider
     public function boot()
     {
         View::addNamespace('admin', base_path().'/admin/resources/views');
+
         $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
 
@@ -34,6 +36,7 @@ class AdminServiceProvider extends ServiceProvider
             $this->commands([
                 MakeContentCommand::class,
                 MakeCrudCommand::class,
+                MakeTemplateCommand::class,
             ]);
         }
     }

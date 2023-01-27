@@ -2,9 +2,6 @@
 
 namespace App\Casts\Loaders;
 
-use App\Http\Resources\PageResource;
-use Inertia\Inertia;
-
 class HomeTemplateLoader extends BaseTemplateLoader
 {
     /**
@@ -14,9 +11,7 @@ class HomeTemplateLoader extends BaseTemplateLoader
      */
     public function load()
     {
-        // return Inertia::render('Pages/Show', [
-        //     'page' => (new PageResource($page))->toArray($request),
-        // ]);
+        //
     }
 
     /**
@@ -29,5 +24,13 @@ class HomeTemplateLoader extends BaseTemplateLoader
         return [
             // ...
         ];
+    }
+
+    /**
+     * Get the view / contents that represents the template.
+     */
+    public function view(): string
+    {
+        return 'pages.home';
     }
 }

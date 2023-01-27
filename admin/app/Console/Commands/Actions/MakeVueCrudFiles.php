@@ -2,9 +2,9 @@
 
 namespace Admin\Console\Commands\Actions;
 
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\File;
 use Admin\Console\Commands\Concerns\ReplaceName;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class MakeVueCrudFiles
 {
@@ -25,50 +25,51 @@ class MakeVueCrudFiles
     {
         $files = [
             'crud.api.ts.stub' => [
-                'path' => 'entities/' . $this->name . '/',
+                'path' => 'entities/'.$this->name.'/',
                 'name' => 'api.ts',
             ],
             'crud.form.ts.stub' => [
-                'path' => 'entities/' . $this->name . '/',
-                'name' => $this->name . '.form.ts',
+                'path' => 'entities/'.$this->name.'/',
+                'name' => $this->name.'.form.ts',
             ],
             'crud.index.ts.stub' => [
-                'path' => 'entities/' . $this->name . '/',
-                'name' => $this->name . '.index.ts',
+                'path' => 'entities/'.$this->name.'/',
+                'name' => $this->name.'.index.ts',
             ],
             'crud.types.ts.stub' => [
-                'path' => 'entities/' . $this->name . '/',
+                'path' => 'entities/'.$this->name.'/',
                 'name' => 'types.ts',
             ],
             'routes.ts.stub' => [
-                'path' => 'Pages/' . $this->name . '/',
+                'path' => 'Pages/'.$this->name.'/',
                 'name' => 'routes.ts',
             ],
             'CrudIndex.vue.stub' => [
-                'path' => 'Pages/' . $this->name . '/',
+                'path' => 'Pages/'.$this->name.'/',
                 'name' => 'Index.vue',
             ],
             'CrudShow.vue.stub' => [
-                'path' => 'Pages/' . $this->name . '/',
+                'path' => 'Pages/'.$this->name.'/',
                 'name' => 'Show.vue',
             ],
             'CrudCreateModal.vue.stub' => [
-                'path' => 'Pages/' . $this->name . '/components/',
-                'name' => 'Add' . ucfirst($this->name) . 'Modal.vue',
+                'path' => 'Pages/'.$this->name.'/components/',
+                'name' => 'Add'.ucfirst($this->name).'Modal.vue',
             ],
         ];
 
         foreach ($files as $stub => $file) {
-            $targetPath = $this->appPath($file['path'] . $file['name']);
+            $targetPath = $this->appPath($file['path'].$file['name']);
 
             if (File::exists($targetPath)) {
-                $this->command->error('File already exists at ' . $targetPath);
+                $this->command->error('File already exists at '.$targetPath);
+
                 continue;
             }
 
             File::ensureDirectoryExists($this->appPath($file['path']));
 
-            $stubPath = base_path($this->stubPath . $stub);
+            $stubPath = base_path($this->stubPath.$stub);
 
             $content = $this->replaceName(File::get($stubPath), $this->name);
 
@@ -93,20 +94,19 @@ class MakeVueCrudFiles
         $exportStatement = "export * from './$this->name/$fileExportName';";
 
         if (! Str::contains($entitiesIndexContent, "// $this->name")) {
-            $entitiesIndexContent = $entitiesIndexContent . "\n\n// $this->name";
+            $entitiesIndexContent = $entitiesIndexContent."\n\n// $this->name";
         }
 
         if (! Str::contains($entitiesIndexContent, $exportStatement)) {
-            $entitiesIndexContent = $entitiesIndexContent . "\n$exportStatement";
+            $entitiesIndexContent = $entitiesIndexContent."\n$exportStatement";
         }
 
         File::put($entitiesIndexPath, $entitiesIndexContent);
-
     }
 
     protected function registerRoutes()
     {
-        $newRouteImport = 'import { routes as ' . lcfirst($this->name) . "Routes } from '@/pages/$this->name/routes';";
+        $newRouteImport = 'import { routes as '.lcfirst($this->name)."Routes } from '@/pages/$this->name/routes';";
 
         $routerPath = $this->appPath('plugins/router.ts');
 
@@ -116,7 +116,7 @@ class MakeVueCrudFiles
         if (! Str::contains($routerContent, $newRouteImport)) {
             preg_match_all("/import.*?\/routes';\n/", $routerContent, $matches);
             $lastMatch = $matches[0][count($matches[0]) - 1];
-            $routerContent = Str::replace($lastMatch, $lastMatch . "$newRouteImport\n\n", $routerContent);
+            $routerContent = Str::replace($lastMatch, $lastMatch."$newRouteImport\n\n", $routerContent);
         } else {
             $this->command->error('Route Import already exists');
         }
@@ -132,13 +132,11 @@ class MakeVueCrudFiles
 
         File::put($routerPath, $routerContent);
 
-        $this->command->info(lcfirst($this->name) . 'Routes successfully registered  in '.$this->appDirectory . 'plugins/router.ts');
-
+        $this->command->info(lcfirst($this->name).'Routes successfully registered  in '.$this->appDirectory.'plugins/router.ts');
     }
 
     protected function appPath(string $path)
     {
         return base_path($this->appDirectory.ltrim($path));
     }
-
 }

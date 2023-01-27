@@ -199,6 +199,7 @@ return [
          * Custom Service Providers...
          */
         Admin\AdminServiceProvider::class,
+        Content\ContentServiceProvider::class,
     ],
 
     /*

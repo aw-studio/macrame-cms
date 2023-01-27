@@ -2,9 +2,9 @@
 
 namespace Admin\Console\Commands;
 
-use Illuminate\Console\Command;
-use Admin\Console\Commands\Actions\MakeVueCrudFiles;
 use Admin\Console\Commands\Actions\MakeLaravelCrudFiles;
+use Admin\Console\Commands\Actions\MakeVueCrudFiles;
+use Illuminate\Console\Command;
 
 class MakeCrudCommand extends Command
 {

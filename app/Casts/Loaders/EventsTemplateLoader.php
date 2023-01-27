@@ -2,7 +2,6 @@
 
 namespace App\Casts\Loaders;
 
-use Admin\Http\Indexes\EventIndex;
 use App\Http\Resources\EventResource;
 use App\Models\Event;
 
@@ -13,7 +12,7 @@ class EventsTemplateLoader extends BaseTemplateLoader
      *
      * @var array
      */
-    protected $events;
+    public $events;
 
     /**
      * Load the data.
@@ -30,11 +29,8 @@ class EventsTemplateLoader extends BaseTemplateLoader
         //     index:      EventIndex::class,
         //     query:      fn () => Event::orderByDesc('starts_at')
         // );
-        $this->events = (new EventIndex())->items(
-            request(),
-            Event::orderByDesc('starts_at'),
-            EventResource::class
-        );
+
+        $this->events = Event::published()->orderByDesc('starts_at')->paginate(15);
     }
 
     /**
@@ -47,5 +43,13 @@ class EventsTemplateLoader extends BaseTemplateLoader
         return [
             'events' => $this->events,
         ];
+    }
+
+    /**
+     * Get the view / contents that represents the template.
+     */
+    public function view(): string
+    {
+        return 'pages.events';
     }
 }

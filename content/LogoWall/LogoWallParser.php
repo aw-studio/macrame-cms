@@ -2,7 +2,6 @@
 
 namespace Content\LogoWall;
 
-use Admin\Support\Resolver\LinkResolver;
 use App\Http\Resources\ImageResource;
 use App\Http\Resources\Wrapper\Image;
 use App\Models\File;

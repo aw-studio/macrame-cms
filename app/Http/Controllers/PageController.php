@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\AnnouncementResource;
 use App\Http\Resources\EventResource;
-use App\Http\Resources\PageResource;
 use App\Models\Announcement;
 use App\Models\Event;
 use App\Models\Page;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 use Inertia\Inertia;
 
 class PageController extends Controller
@@ -24,27 +24,10 @@ class PageController extends Controller
 
         $this->abortIfPageCannotBeViewed($request, $page);
 
-        return Inertia::render($this->resolveTemplate($page), [
-            'page' => (new PageResource($page))->toArray($request),
+        return View::make($page->template->data()->view(), [
+            'page' => $page,
             'data' => $page->template->data(),
         ]);
-    }
-
-    /**
-     * Resolve the page template.
-     *
-     * @param  Page  $page
-     * @return string
-     */
-    protected function resolveTemplate(Page $page): string
-    {
-        return match ((string) $page->template) {
-            'home' => 'Pages/Home',
-            'announcements' => 'Pages/Announcements',
-            'events' => 'Pages/Events',
-            'contact' => 'Pages/Contact',
-            default => 'Pages/Show',
-        };
     }
 
     public function showAnnouncement(Request $request, Announcement $announcement)

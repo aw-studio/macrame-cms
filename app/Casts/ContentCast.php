@@ -2,7 +2,7 @@
 
 namespace App\Casts;
 
-use Admin\Support\Resolver\LinkResolver;
+use App\Casts\Resolver\LinkResolver;
 use Content\Block\BlockParser;
 use Content\Cards\CardsParser;
 use Content\CTA\CTAParser;
@@ -109,5 +109,16 @@ class ContentCast extends BaseContentCast
         $p->parse();
 
         return $p;
+    }
+
+    public function __get($key)
+    {
+        $this->parse();
+
+        if (! array_key_exists($key, $this->items)) {
+            return null;
+        }
+
+        return $this->items[$key];
     }
 }

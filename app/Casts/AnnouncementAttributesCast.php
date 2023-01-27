@@ -2,7 +2,7 @@
 
 namespace App\Casts;
 
-use Admin\Support\Resolver\LinkResolver;
+use App\Casts\Resolver\LinkResolver;
 use App\Http\Resources\ImageResource;
 use App\Http\Resources\Wrapper\Image;
 use App\Models\File;
@@ -47,5 +47,16 @@ class AnnouncementAttributesCast extends ContentCast
             ...$this->items,
             'image' => $image ? (new ImageResource($image))->toArray(request()) : null,
         ];
+    }
+
+    public function __get($key)
+    {
+        $this->parse();
+
+        if (! array_key_exists($key, $this->items)) {
+            return null;
+        }
+
+        return $this->items[$key];
     }
 }

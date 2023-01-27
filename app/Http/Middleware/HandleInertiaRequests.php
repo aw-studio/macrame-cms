@@ -44,17 +44,17 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         return array_merge(parent::share($request), [
-            'nav' => [
-                'main' => new NavResource(
-                    Menu::where('type', 'main')->first()->items()->whereRoot()->get()
-                ),
-                'footer' => new NavResource(
-                    Menu::where('type', 'footer')->first()->items()->whereRoot()->get()
-                ),
-            ],
+            // 'nav' => [
+            //     'main' => new NavResource(
+            //         Menu::where('type', 'main')->first()->items()->whereRoot()->get()
+            //     ),
+            //     'footer' => new NavResource(
+            //         Menu::where('type', 'footer')->first()->items()->whereRoot()->get()
+            //     ),
+            // ],
             'partials' => [
-                'header' => PartialResource::make(Partial::where('template', 'header')->first()),
-                'footer' => PartialResource::make(Partial::where('template', 'footer')->first()),
+                // 'header' => PartialResource::make(Partial::where('template', 'header')->first()),
+                // 'footer' => PartialResource::make(Partial::where('template', 'footer')->first()),
             ],
         ]);
     }
