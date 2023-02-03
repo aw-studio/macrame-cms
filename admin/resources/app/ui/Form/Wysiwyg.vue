@@ -658,6 +658,11 @@
                 class="w-full"
                 label="Externer Link"
             />
+            <CheckboxSwitch
+                sm
+                label="Neues Fenster öffnen"
+                v-model="selectedLinkTargetBlank"
+            />
         </FormGroup>
         <template v-slot:footer>
             <Button @click="setLink()"> select </Button>
@@ -691,6 +696,7 @@ import Select from './Select.vue';
 import Modal from '../Modal.vue';
 import Button from '../Buttons/Button.vue';
 import Input from './Input.vue';
+import CheckboxSwitch from './CheckboxSwitch.vue';
 import Toggle from './Toggle.vue';
 import FormGroup from './FormGroup.vue';
 import IconQuote from '../Icons/IconQuote.vue';
@@ -809,11 +815,19 @@ const activeStyle = computed(() => {
 const externalLink = ref(false);
 const isOpen = ref(false);
 const selectedLink = ref();
+const selectedLinkTargetBlank = ref(false);
 
 const selectLink = () => {
     selectedLink.value = editor.value?.getAttributes('link').href;
+    if (editor.value?.getAttributes('link').target?.startsWith('_blank')) {
+        selectedLinkTargetBlank.value = true;
+    } else {
+        selectedLinkTargetBlank.value = false;
+    }
     if (selectedLink.value?.startsWith('http')) {
         externalLink.value = true;
+    } else {
+        externalLink.value = false;
     }
     isOpen.value = true;
 };
@@ -831,6 +845,11 @@ const setLink = () => {
     // const previousUrl = editor.value?.getAttributes('link').href;
     // const url = window.prompt('URL', previousUrl);
     const url = selectedLink.value;
+    let target = '_self';
+
+    if (selectedLinkTargetBlank.value) {
+        target = '_blank';
+    }
 
     isOpen.value = false;
 
@@ -851,7 +870,7 @@ const setLink = () => {
         ?.chain()
         .focus()
         .extendMarkRange('link')
-        .setLink({ href: url, target: '_self' })
+        .setLink({ href: url, target: target })
         .run();
 };
 
