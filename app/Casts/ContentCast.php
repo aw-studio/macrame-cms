@@ -2,6 +2,7 @@
 
 namespace App\Casts;
 
+use App\Casts\BaseCasts\BaseContentCast;
 use App\Casts\Resolver\LinkResolver;
 use Content\Block\BlockParser;
 use Content\Cards\CardsParser;
@@ -108,5 +109,4 @@ class ContentCast extends BaseContentCast
 
         return $p->toArray();
     }
-
 }

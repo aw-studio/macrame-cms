@@ -3,6 +3,7 @@
 namespace App\Casts;
 
 use Admin\Contracts\Pages\Page;
+use App\Casts\BaseCasts\BaseContentCast;
 use App\Casts\Resolver\LinkResolver;
 use App\Models\File;
 
@@ -52,5 +53,4 @@ class PageAttributesCast extends BaseContentCast
 
         return $this;
     }
-
 }

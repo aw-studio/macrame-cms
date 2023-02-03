@@ -2,11 +2,10 @@
 
 namespace App\Casts;
 
-use App\Models\File;
-use App\Casts\BaseContentCast;
+use App\Casts\BaseCasts\BaseContentCast;
 use App\Casts\Resolver\LinkResolver;
-use App\Http\Resources\ImageResource;
 use App\Http\Resources\Wrapper\Image;
+use App\Models\File;
 
 class AnnouncementAttributesCast extends BaseContentCast
 {

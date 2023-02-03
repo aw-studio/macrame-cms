@@ -2,7 +2,7 @@
 
 namespace App\Casts;
 
-use App\Http\Resources\ImageResource;
+use App\Casts\BaseCasts\BaseContentCast;
 use App\Http\Resources\Wrapper\Image;
 use App\Models\File;
 

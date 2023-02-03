@@ -2,6 +2,7 @@
 
 namespace App\Casts;
 
+use App\Casts\BaseCasts\BaseContentCast;
 use App\Casts\Resolver\LinkResolver;
 
 class EventAttributesCast extends BaseContentCast
