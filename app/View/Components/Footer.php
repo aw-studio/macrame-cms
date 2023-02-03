@@ -28,7 +28,7 @@ class Footer extends Component
     {
         return view('layouts.footer', [
             'data' => Partial::where('template', 'footer')->first()->attributes,
-            'navigation' => Menu::where('type', 'footer')->first()->items()->whereRoot()->get(),
+            'navigation' => Menu::where('type', 'footer')->first()->items()->whereRoot()->orderBy('order_column')->get(),
         ]);
     }
 }
