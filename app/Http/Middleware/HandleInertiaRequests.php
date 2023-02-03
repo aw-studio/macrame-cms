@@ -46,10 +46,10 @@ class HandleInertiaRequests extends Middleware
         return array_merge(parent::share($request), [
             // 'nav' => [
             //     'main' => new NavResource(
-            //         Menu::where('type', 'main')->first()->items()->whereRoot()->get()
+            //         Menu::where('type', 'main')->first()->items()->whereRoot()->orderBy('order_column')->get()
             //     ),
             //     'footer' => new NavResource(
-            //         Menu::where('type', 'footer')->first()->items()->whereRoot()->get()
+            //         Menu::where('type', 'footer')->first()->items()->whereRoot()->orderBy('order_column')->get()
             //     ),
             // ],
             'partials' => [

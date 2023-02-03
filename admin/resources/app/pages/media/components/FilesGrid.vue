@@ -4,7 +4,7 @@
             class="mb-2 text-sm uppercase text-gray"
             v-if="!mediaIndex.isLoading"
         >
-            {{ $tc('media.n_files', mediaIndex.meta.total) }}
+            {{ $t('media.n_files', mediaIndex.meta.total) }}
         </div>
         <div class="relative grid grid-cols-12 gap-5">
             <div

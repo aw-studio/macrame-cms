@@ -22,6 +22,7 @@ class MenuItemTreeController
         $tree = $menu
             ->items()
             ->whereRoot()
+            ->orderBy('order_column')
             ->get();
 
         return MenuItemTreeResource::collection($tree);

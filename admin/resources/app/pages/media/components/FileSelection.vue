@@ -1,6 +1,6 @@
 <template>
     <div class="flex items-center space-x-4">
-        <div>{{ $tc('media.n_files_selected', selection.files.length) }}</div>
+        <div>{{ $t('media.n_files_selected', selection.files.length) }}</div>
         <div>
             <ContextMenu>
                 <template v-slot:button>

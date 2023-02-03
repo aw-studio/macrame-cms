@@ -16,7 +16,7 @@ class MainNavigation extends Component
      */
     public function __construct()
     {
-        $this->menu = Menu::where('type', 'main')->first()->items()->whereRoot()->get();
+        $this->menu = Menu::where('type', 'main')->first()->items()->whereRoot()->orderBy('order_column')->get();
     }
 
     /**
