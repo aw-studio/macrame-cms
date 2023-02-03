@@ -43,6 +43,8 @@ const props = defineProps({
             lat: null,
             lng: null,
             zoom: 4,
+            markers: [],
+            mouseover: false,
         }),
     },
 });

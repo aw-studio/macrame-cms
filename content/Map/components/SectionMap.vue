@@ -25,6 +25,8 @@ const props = defineProps({
             lat: null,
             lng: null,
             zoom: null,
+            markers: [],
+            mouseover: false,
         }),
     },
 });
