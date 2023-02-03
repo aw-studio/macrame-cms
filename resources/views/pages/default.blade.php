@@ -2,11 +2,10 @@
     <x-slot name="meta">
         <x-meta :page="$page"/>
     </x-slot>
-    {{-- <Image
-        :src="$page->attributes->header->url"
-        v-if="$page->attributes?->header?->url"
-        class="w-full h-64"
-    /> --}}
+    {{-- @dd($page->content) --}}
+    @if($page->attributes->header_image)
+        <img src="{{$page->attributes->header_image->getUrl() }}" alt="header image" class="w-full h-64" />
+    @endif;
 
     <div class="container">
         <h1 class="my-16">

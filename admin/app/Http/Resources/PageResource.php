@@ -36,8 +36,8 @@ class PageResource extends JsonResource
             'parent_id' => $this->parent_id,
 
             // dynamic
-            'content' => $this->content->toArray(),
-            'attributes' => $this->attributes->toArray(),
+            'content' => $this->content->toArray(raw: true),
+            'attributes' => $this->attributes->toArray(raw: true),
             'full_slug' => $this->getFullSlug(),
 
             // livetime

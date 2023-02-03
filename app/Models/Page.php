@@ -83,6 +83,10 @@ class Page extends Model implements PageContract
         'has_been_published',
     ];
 
+    protected $with = [
+        'parent',
+    ];
+
     /**
      * The creator of the page.
      *

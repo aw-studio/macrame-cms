@@ -8,8 +8,8 @@
     <div
         class="container grid grid-cols-1 gap-5 pb-16 md:grid-cols-2 lg:grid-cols-3"
         >
-        @foreach ($posts as $post)
-            <h2>{{$post->attributes->title}}</h2>
+        @foreach ($events as $event)
+            <h2>{{$event->attributes->title}}</h2>
         @endforeach
     </div>
 </x-default-layout>

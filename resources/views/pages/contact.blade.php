@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-            @foreach ($data->people as $person)
+            @foreach ($people as $person)
             <div>
                 {{$person}}
             </div>

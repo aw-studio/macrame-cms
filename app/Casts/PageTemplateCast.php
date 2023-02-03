@@ -2,25 +2,25 @@
 
 namespace App\Casts;
 
-use App\Casts\Loaders\AnnouncementsTemplateLoader;
-use App\Casts\Loaders\ContactTemplateLoader;
-use App\Casts\Loaders\DefaultTemplateLoader;
-use App\Casts\Loaders\EventsTemplateLoader;
-use App\Casts\Loaders\HomeTemplateLoader;
-use Macrame\Content\TemplateCast;
+use App\Casts\BaseCasts\BaseTemplateCast;
+use App\Templates\AnnouncementsTemplate;
+use App\Templates\ContactTemplate;
+use App\Templates\DefaultTemplate;
+use App\Templates\EventsTemplate;
+use App\Templates\HomeTemplate;
 
-class PageTemplateCast extends TemplateCast
+class PageTemplateCast extends BaseTemplateCast
 {
     /**
      * Map of templates to the corresponding parsers.
      *
      * @var array
      */
-    protected $parsers = [
-        'home' => HomeTemplateLoader::class,
-        'announcements' => AnnouncementsTemplateLoader::class,
-        'events' => EventsTemplateLoader::class,
-        'contact' => ContactTemplateLoader::class,
-        'default' => DefaultTemplateLoader::class,
+    protected $templates = [
+        'home' => HomeTemplate::class,
+        'events' => EventsTemplate::class,
+        'default' => DefaultTemplate::class,
+        'announcements' => AnnouncementsTemplate::class,
+        'contact' => ContactTemplate::class,
     ];
 }

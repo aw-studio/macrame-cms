@@ -15,8 +15,6 @@ use Content\LogoWall\LogoWallParser;
 use Content\Map\MapParser;
 use Content\TeaserBoxes\TeaserBoxesParser;
 use Content\TextImage\TextImageParser;
-use Macrame\Content\ContentCast as BaseContentCast;
-use Macrame\Content\Contracts\Parser;
 
 class ContentCast extends BaseContentCast
 {
@@ -55,7 +53,7 @@ class ContentCast extends BaseContentCast
 
         // For any item, we want to make sure routes are replaced with actual links
         array_walk_recursive($this->items, function (&$value, $key) {
-            if ($value instanceof Parser || $key == 'items') {
+            if ((! is_array($value) && ! is_string($value)) || $key == 'items') {
                 return;
             }
 
@@ -108,17 +106,7 @@ class ContentCast extends BaseContentCast
         $p = new $parser($value);
         $p->parse();
 
-        return $p;
+        return $p->toArray();
     }
 
-    public function __get($key)
-    {
-        $this->parse();
-
-        if (! array_key_exists($key, $this->items)) {
-            return null;
-        }
-
-        return $this->items[$key];
-    }
 }
