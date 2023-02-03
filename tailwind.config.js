@@ -1,7 +1,11 @@
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
-    content: ['./resources/**/*.{vue,js,ts}', './resources/views/**/*.blade.php'],
+    content: [
+        './resources/**/*.{vue,js,ts}',
+        './resources/views/**/*.blade.php',
+        './content/**/*.blade.php',
+    ],
     theme: {
         container: {
             center: true,
