@@ -16,7 +16,6 @@ class ContentResolver extends Component
      */
     public function __construct(ContentCast $content)
     {
-        // dd($content->toArray());
         $this->content = $content;
     }
 
