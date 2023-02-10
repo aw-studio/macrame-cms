@@ -24,7 +24,7 @@ trait IsFile
         return DB::transaction(function () use ($file, $attributes) {
             $model = static::create(array_merge([
                 'filepath' => Str::uuid(),
-                'filename' => Str::replace(' ', '_', $file->getClientOriginalName()),
+                'filename' => self::sanitizeFileName($file->getClientOriginalName()),
                 'mimetype' => $file->getClientMimeType(),
                 'size' => $file->getSize(),
             ], $attributes));
@@ -45,6 +45,15 @@ trait IsFile
         });
     }
 
+    /**
+     * Remove unwanted characters from a files name.
+     * @param string $string
+     * @return string
+     */
+    public static function sanitizeFileName(string $filename)
+    {
+        return Str::replace([' ', '(', ')'], ['-', '', ''], $filename);
+    }
     /**
      * Gets the url to the file.
      *
