@@ -24,7 +24,7 @@ trait IsFile
         return DB::transaction(function () use ($file, $attributes) {
             $model = static::create(array_merge([
                 'filepath' => Str::uuid(),
-                'filename' => $file->getClientOriginalName(),
+                'filename' => Str::replace(' ', '_', $file->getClientOriginalName()),
                 'mimetype' => $file->getClientMimeType(),
                 'size' => $file->getSize(),
             ], $attributes));
