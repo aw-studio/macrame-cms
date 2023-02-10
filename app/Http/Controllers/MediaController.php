@@ -24,6 +24,10 @@ class MediaController extends Controller
             abort(404);
         }
 
+        if(!$this->isImageFile($file)){
+            return response()->file($originalPath);
+        }
+
         $path = $originalPath;
 
         $h = $this->roundImageSize($request->h);
@@ -89,5 +93,24 @@ class MediaController extends Controller
         }
 
         return 2800;
+    }
+
+    /**
+     * Checks if the given file string has an extension
+     * of a supported image file format.
+     * 
+     * @param string $file
+     * @return bool
+     */
+    protected function isImageFile(string $file){
+
+        $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+        $supportedFileFormats = ['jpg', 'jpeg', 'png', 'gif'];
+
+        if(!in_array($ext, $supportedFileFormats)){
+            return false;
+        }
+
+        return true;
     }
 }
