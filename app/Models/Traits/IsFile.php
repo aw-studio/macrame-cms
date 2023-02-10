@@ -7,6 +7,7 @@ use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -31,10 +32,15 @@ trait IsFile
 
             $model->setFilepath($model->getKey());
 
-            $model->storage()->putFileAs(
-                $model->getFilepath(),
+            if ($model->isImage()) {
+                $file = Image::make($file)
+                    ->orientate()
+                    ->encode();
+            }
+
+            $model->storage()->put(
+                $model->getFilepath().DIRECTORY_SEPARATOR.$model->filename,
                 $file,
-                $model->filename
             );
 
             if ($model->isDirty('filepath')) {
@@ -54,6 +60,17 @@ trait IsFile
     {
         return Str::replace([' ', '(', ')'], ['-', '', ''], $filename);
     }
+
+    /**
+     * Check if the file is of mimetype image.
+     *
+     * @return bool
+     */
+    public function isImage()
+    {
+        return str_contains($this->mimetype, 'image/');
+    }
+
     /**
      * Gets the url to the file.
      *
