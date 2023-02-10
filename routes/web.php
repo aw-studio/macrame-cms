@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/storage/c/{id}/{file}', [MediaController::class, 'conversion']);
+Route::get('/storage/c/{id}/{file}', [MediaController::class, 'conversion'])->withoutMiddleware('web');
