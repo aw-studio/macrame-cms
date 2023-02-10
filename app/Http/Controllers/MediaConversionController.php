@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
-class MediaController extends Controller
+class MediaConversionController extends Controller
 {
     /**
      * Get media conversions.
@@ -15,7 +15,7 @@ class MediaController extends Controller
      * @param  string  $file
      * @return void
      */
-    public function conversion(Request $request, $id, $file)
+    public function __invoke(Request $request, $id, $file)
     {
         $originalPath = storage_path("app/public/{$id}/{$file}");
 
