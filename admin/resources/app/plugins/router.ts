@@ -15,6 +15,7 @@ import { routes as peopleRoutes } from '@/pages/people/routes';
 import { routes as eventRoutes } from '@/pages/events/routes';
 import { routes as redirectRoutes } from '@/pages/redirects/routes';
 import { routes as systemRoutes } from '@/pages/system/routes';
+import app from '@/config/app';
 
 const routes: RouteRecordRaw[] = [
     // guest
@@ -33,12 +34,12 @@ const routes: RouteRecordRaw[] = [
             ...mediaRoutes,
             ...menuRoutes,
             ...pagesRoutes,
-            ...blocksRoutes,
             ...partialsRoutes,
             ...appSettingsRoutes,
-            ...announcementRoutes,
-            ...eventRoutes,
-            ...peopleRoutes,
+            ...(app.features.blocks ? blocksRoutes : []),
+            ...(app.features.posts ? announcementRoutes : []),
+            ...(app.features.events ? eventRoutes : []),
+            ...(app.features.people ? peopleRoutes : []),
             ...redirectRoutes,
             ...systemRoutes,
         ],
