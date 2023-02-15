@@ -7,6 +7,7 @@ use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -24,17 +25,22 @@ trait IsFile
         return DB::transaction(function () use ($file, $attributes) {
             $model = static::create(array_merge([
                 'filepath' => Str::uuid(),
-                'filename' => $file->getClientOriginalName(),
+                'filename' => self::sanitizeFileName($file->getClientOriginalName()),
                 'mimetype' => $file->getClientMimeType(),
                 'size' => $file->getSize(),
             ], $attributes));
 
             $model->setFilepath($model->getKey());
 
-            $model->storage()->putFileAs(
-                $model->getFilepath(),
+            if ($model->isImage()) {
+                $file = Image::make($file)
+                    ->orientate()
+                    ->encode();
+            }
+
+            $model->storage()->put(
+                $model->getFilepath().DIRECTORY_SEPARATOR.$model->filename,
                 $file,
-                $model->filename
             );
 
             if ($model->isDirty('filepath')) {
@@ -43,6 +49,26 @@ trait IsFile
 
             return $model;
         });
+    }
+
+    /**
+     * Remove unwanted characters from a files name.
+     * @param string $string
+     * @return string
+     */
+    public static function sanitizeFileName(string $filename)
+    {
+        return Str::replace([' ', '(', ')'], ['-', '', ''], $filename);
+    }
+
+    /**
+     * Check if the file is of mimetype image.
+     *
+     * @return bool
+     */
+    public function isImage()
+    {
+        return str_contains($this->mimetype, 'image/');
     }
 
     /**
