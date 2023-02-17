@@ -40,8 +40,6 @@ class EventsTemplate extends BaseTemplate
     {
         $this->load();
 
-        dd('test');
-
         return view('pages.events', [
             'page' => $this->page,
             'events' => $this->events,

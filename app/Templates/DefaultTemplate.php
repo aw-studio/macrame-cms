@@ -28,7 +28,7 @@ class DefaultTemplate extends BaseTemplate
 
     public function render()
     {
-        return view('pages.events', [
+        return view('pages.default', [
             'page' => $this->page,
         ]);
     }

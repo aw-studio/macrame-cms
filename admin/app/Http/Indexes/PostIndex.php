@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Macrame\Index\Index;
 
-class AnnouncementIndex extends Index
+class PostIndex extends Index
 {
     /**
      * Default number of items per page.

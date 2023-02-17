@@ -1,6 +1,6 @@
 import {
     PartialResource,
-    AnnouncementResource,
+    PostResource,
     DateTime,
     SystemUserResource,
     RedirectResource,
@@ -141,8 +141,8 @@ export type SystemUserFormData = {
 };
 export type SystemUserForm = Form<SystemUserFormData, SystemUserResource>;
 
-// Announcement
-export type AnnouncementFormData = {
+// Post
+export type PostFormData = {
     slug: string;
     attributes: {
         title: string;
@@ -156,7 +156,7 @@ export type AnnouncementFormData = {
     feature_until: DateTime;
     is_pinned: boolean;
 };
-export type AnnouncementForm = Form<AnnouncementFormData, AnnouncementResource>;
+export type PostForm = Form<PostFormData, PostResource>;
 
 // Event
 export type EventFormData = {

@@ -2,13 +2,13 @@
     <Main v-if="show">
         <Topbar>
             <div class="font-semibold">
-                {{ announcementForm.attributes.title }}
+                {{ postForm.attributes.title }}
             </div>
             <div class="flex items-center space-x-4">
-                <Publish v-model="announcementForm.publish_at.iso" />
+                <Publish v-model="postForm.publish_at.iso" />
                 <SaveButton
                     @save="save()"
-                    :disabled="!announcementForm.isDirty"
+                    :disabled="!postForm.isDirty"
                     :busy="busy"
                 >
                     {{ $t('pages.save') }}
@@ -20,15 +20,15 @@
                 <Card>
                     <FormGroup>
                         <Input
-                            v-model="announcementForm.attributes.title"
+                            v-model="postForm.attributes.title"
                             label="Überschrift"
                         />
                         <Input
-                            v-model="announcementForm.attributes.sub_title"
+                            v-model="postForm.attributes.sub_title"
                             label="Unterüberschrift"
                         />
                         <Wysiwyg
-                            v-model="announcementForm.attributes.text"
+                            v-model="postForm.attributes.text"
                             label="Inhalt"
                         />
                     </FormGroup>
@@ -36,7 +36,7 @@
                 <div class="mt-4">
                     <ToggleSections />
                     <Content
-                        v-model="announcementForm.content"
+                        v-model="postForm.content"
                         :sections="sections"
                         :full-height="false"
                     />
@@ -53,16 +53,16 @@
                 <MainSidebarSection title="Titelbild">
                     <FormGroup>
                         <SelectImage
-                            v-model="(announcementForm.attributes.image as any)"
+                            v-model="(postForm.attributes.image as any)"
                         />
                         <Input
-                            v-if="announcementForm.attributes.image"
-                            v-model="announcementForm.attributes.image.title"
+                            v-if="postForm.attributes.image"
+                            v-model="postForm.attributes.image.title"
                             label="Bildtitel"
                         />
                         <Input
-                            v-if="announcementForm.attributes.image"
-                            v-model="announcementForm.attributes.image.alt"
+                            v-if="postForm.attributes.image"
+                            v-model="postForm.attributes.image.alt"
                             label="Alt"
                         />
                     </FormGroup>
@@ -70,28 +70,28 @@
                 <MainSidebarSection title="Ablaufdatum">
                     <DatePicker
                         :with-time="true"
-                        v-model="announcementForm.unpublish_at.iso"
+                        v-model="postForm.unpublish_at.iso"
                     />
                 </MainSidebarSection>
                 <MainSidebarSection title="Auslobung Startseite">
                     <div class="p-4 mt-2 bg-gray-100 rounded-xs">
                         <FormField label="Vorschlag Auslobung">
                             <Toggle
-                                v-model="announcementForm.propose_for_feature"
+                                v-model="postForm.propose_for_feature"
                             />
                         </FormField>
                         <div v-if="isAdmin">
                             <FormField label="Auslobung bis">
                                 <DatePicker
-                                    v-model="announcementForm.feature_until.iso"
+                                    v-model="postForm.feature_until.iso"
                                 />
                             </FormField>
                             <FormField
                                 label="Wichtigkeit"
-                                v-if="announcementForm.feature_until.iso"
+                                v-if="postForm.feature_until.iso"
                             >
                                 <Slider
-                                    v-model="announcementForm.importance"
+                                    v-model="postForm.importance"
                                     min="1"
                                     max="5"
                                     step="1"
@@ -99,9 +99,9 @@
                             </FormField>
                             <FormField
                                 label="Auslobung anpinnen"
-                                v-if="announcementForm.feature_until.iso"
+                                v-if="postForm.feature_until.iso"
                             >
-                                <Toggle v-model="announcementForm.is_pinned" />
+                                <Toggle v-model="postForm.is_pinned" />
                             </FormField>
                         </div>
                     </div>
@@ -126,7 +126,7 @@
 </template>
 
 <script lang="ts" setup>
-import { announcementForm, deleteAnnouncement, isAdmin } from '@/entities';
+import { postForm, deletePost, isAdmin } from '@/entities';
 import {
     Main,
     MainBody,
@@ -172,9 +172,9 @@ const route = useRoute();
 const router = useRouter();
 
 onMounted(() => {
-    let id = parseInt(route.params.announcement as string);
+    let id = parseInt(route.params.post as string);
 
-    announcementForm.load(id).then(() => {
+    postForm.load(id).then(() => {
         show.value = true;
     });
 });
@@ -183,20 +183,20 @@ const busy = ref<boolean>(false);
 
 const save = async () => {
     busy.value = true;
-    await announcementForm.submit();
+    await postForm.submit();
     busy.value = false;
 };
 
 const del = () => {
-    let id = parseInt(route.params.announcement as string);
+    let id = parseInt(route.params.post as string);
 
     if (
         confirm(
-            `Bist du sicher, dass die Meldung ${announcementForm.attributes.title} gelöscht werden soll?`
+            `Bist du sicher, dass die Meldung ${postForm.attributes.title} gelöscht werden soll?`
         )
     ) {
-        deleteAnnouncement(id).then(response => {
-            router.push(`/announcements/`);
+        deletePost(id).then(response => {
+            router.push(`/posts/`);
         });
     }
 };

@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use App\Casts\AnnouncementAttributesCast;
+use App\Casts\PostAttributesCast;
 use App\Casts\ContentCast;
 use App\Models\Traits\HasFiles;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Announcement extends Model
+class Post extends Model
 {
     use HasFactory;
     use HasFiles;
@@ -36,7 +36,7 @@ class Announcement extends Model
      * @var array
      */
     protected $casts = [
-        'attributes' => AnnouncementAttributesCast::class,
+        'attributes' => PostAttributesCast::class,
         'content' => ContentCast::class,
         'publish_at' => 'datetime',
         'unpublish_at' => 'datetime',
@@ -53,7 +53,7 @@ class Announcement extends Model
     ];
 
     /**
-     * An Announcement belongs to a user.
+     * An Post belongs to a user.
      *
      * @return BelongsTo
      */
@@ -102,8 +102,8 @@ class Announcement extends Model
 
     public function getFullSlug()
     {
-        return route('announcement.show', [
-            'announcement' => $this->slug,
+        return route('post.show', [
+            'post' => $this->slug,
         ]);
     }
 }

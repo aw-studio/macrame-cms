@@ -8,7 +8,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /**
  * @mixin Menu
  */
-class AnnouncementResource extends JsonResource
+class PostResource extends JsonResource
 {
     /**
      * The resource instance.

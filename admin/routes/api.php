@@ -1,6 +1,6 @@
 <?php
 
-use Admin\Http\Controllers\AnnouncementController;
+use Admin\Http\Controllers\PostController;
 use Admin\Http\Controllers\Auth\AuthenticatedSessionController;
 use Admin\Http\Controllers\BlockController;
 use Admin\Http\Controllers\EventController;
@@ -109,8 +109,8 @@ Route::group([
     // Redirects
     Route::resource('/redirects', RedirectController::class);
 
-    // Announcements
-    Route::resource('/announcements', AnnouncementController::class);
+    // Posts
+    Route::resource('/posts', PostController::class);
 
     // Events
     if (Feature::enabled('events')) {

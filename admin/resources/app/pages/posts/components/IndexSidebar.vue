@@ -4,15 +4,15 @@
             <IconInputSearch class="w-4 h-4" />
         </template>
         <MainSidebarSection title="Suche">
-            <Input v-model.debounce="announcementIndex.search" />
-            <div v-if="announcementIndex.search">
-                {{ announcementIndex.meta.total }} Treffer
+            <Input v-model.debounce="postIndex.search" />
+            <div v-if="postIndex.search">
+                {{ postIndex.meta.total }} Treffer
             </div>
         </MainSidebarSection>
         <MainSidebarSection title="Auslobung" v-if="isAdmin">
             <Checkbox
                 class="-ml-1"
-                v-model="announcementIndex.filters.featured.value"
+                v-model="postIndex.filters.featured.value"
                 value="is_featured"
                 field-id="1"
             >
@@ -20,7 +20,7 @@
             </Checkbox>
             <Checkbox
                 class="-ml-1"
-                v-model="announcementIndex.filters.default.value"
+                v-model="postIndex.filters.default.value"
                 value="is_pinned"
                 field-id="1"
             >
@@ -34,6 +34,6 @@ import { ref } from 'vue';
 import { MainSidebar, MainSidebarSection } from '@/layout';
 import { Checkbox, Input } from '@/ui';
 import IconInputSearch from '@/ui/Icons/IconInputSearch.vue';
-import { announcementIndex, isAdmin } from '@/entities';
+import { postIndex, isAdmin } from '@/entities';
 const isOpen = ref(true);
 </script>

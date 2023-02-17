@@ -5,7 +5,7 @@ import { messages as pages } from '@/pages/pages/lang';
 import { messages as media } from '@/pages/media/lang';
 import { messages as menus } from '@/pages/menus/lang';
 import { messages as partials } from '@/pages/partials/lang';
-import { messages as announcements } from '@/pages/announcements/lang';
+import { messages as posts } from '@/pages/posts/lang';
 import { messages as events } from '@/pages/events/lang';
 import { messages as people } from '@/pages/people/lang';
 import { messages as content } from '@/modules/content/lang';
@@ -24,7 +24,7 @@ const translations = [
     layout,
     menus,
     partials,
-    announcements,
+    posts,
     events,
     people,
     ui,

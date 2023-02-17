@@ -32,16 +32,16 @@ class PageSeeder extends Seeder
             ],
         ]);
         Page::create([
-            'name' => 'Meldungen',
+            'name' => 'Beiträge',
             'slug' => 'meldungen',
             'order_column' => '0',
             'publish_at' => now(),
             'is_live' => true,
             'creator_id' => 1,
-            'template' => 'announcements',
+            'template' => 'posts',
             'preview_key' => 'd183acef-1326-4764-8dc6-ceaa4446cbcf',
             'attributes' => [
-                'h1' => 'Meldungen',
+                'h1' => 'Beiträge',
             ],
         ]);
         Page::create([
