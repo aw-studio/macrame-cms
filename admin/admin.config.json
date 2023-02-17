@@ -1,0 +1,8 @@
+{
+    "features": {
+        "posts": true,
+        "events": false,
+        "people": false,
+        "blocks": false
+    }
+}

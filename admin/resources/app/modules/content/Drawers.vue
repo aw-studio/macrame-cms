@@ -30,12 +30,13 @@
     </MainSidebarSection>
     <MainSidebarSection :title="$t('content.reusables')">
         <Cabinet>
-            <DrawerBlock :draws="SectionBlock" />
+            <DrawerBlock :draws="SectionBlock" v-if="app.features.blocks"/>
         </Cabinet>
     </MainSidebarSection>
 </template>
 
 <script lang="ts" setup>
+import app from '@/config/app';
 import { MainSidebarSection } from '@/layout';
 import Cabinet from './Cabinet.vue';
 

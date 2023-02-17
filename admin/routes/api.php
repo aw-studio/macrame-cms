@@ -22,6 +22,7 @@ use Admin\Http\Controllers\UserProfileController;
 use Admin\Http\Middleware\AuthenticateAdmin;
 use Illuminate\Support\Facades\Route;
 use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
+use Admin\Support\Feature;
 
 Route::group([
     'middleware' => [
@@ -40,9 +41,6 @@ Route::group([
     Route::post('/profile/password', [UserProfileController::class, 'updatePassword'])->name('profile.password');
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-    // users
-    // Route::get('/users', [UserController::class, 'items'])->name('user.items');
-    // Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('user.delete');
 
     // links
     Route::get('/links', LinkController::class)->name('links');
@@ -97,11 +95,13 @@ Route::group([
     Route::get('/partials/{template}', [PartialController::class, 'show'])->name('partials.show');
     Route::put('/partials/{partial:template}', [PartialController::class, 'update'])->name('partials.update');
 
-    // blocks
-    Route::post('/blocks', [BlockController::class, 'store'])->name('blocks.store');
-    Route::get('/blocks', [BlockController::class, 'items'])->name('blocks.items');
-    Route::get('/blocks/{block}', [BlockController::class, 'show'])->name('blocks.show');
-    Route::put('/blocks/{block}', [BlockController::class, 'update'])->name('blocks.update');
+    if(Feature::enabled('blocks')){
+        // blocks
+        Route::post('/blocks', [BlockController::class, 'store'])->name('blocks.store');
+        Route::get('/blocks', [BlockController::class, 'items'])->name('blocks.items');
+        Route::get('/blocks/{block}', [BlockController::class, 'show'])->name('blocks.show');
+        Route::put('/blocks/{block}', [BlockController::class, 'update'])->name('blocks.update');
+    }
 
     // system-users
     Route::resource('/system-users', SystemUserController::class)->parameters(['system-users' => 'user']);
@@ -113,9 +113,14 @@ Route::group([
     Route::resource('/posts', PostController::class);
 
     // Events
-    Route::resource('/events', EventController::class);
+    if (Feature::enabled('events')) {
+        Route::resource('/events', EventController::class);
+    }
 
     // people
-    Route::apiResource('/people', PersonController::class);
-    Route::get('/people/{person}', [PersonController::class, 'show']);
+    if (Feature::enabled('people')) {
+        Route::apiResource('/people', PersonController::class);
+        Route::get('/people/{person}', [PersonController::class, 'show']);
+    }
+
 });

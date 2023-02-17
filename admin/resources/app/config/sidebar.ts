@@ -10,6 +10,7 @@ import IconCalendarVue from '@/ui/Icons/IconCalendar.vue';
 import IconGroup from '@/ui/Icons/IconGroup.vue';
 import { isAdmin } from '@/entities';
 import { useI18n } from 'vue-i18n';
+import app from './app';
 
 const useSidebarPrimarySections: () => SidebarSection[] = () => {
     const { t } = useI18n();
@@ -40,7 +41,7 @@ const useSidebarPrimarySections: () => SidebarSection[] = () => {
                     title: t('layout.blocks'),
                     to: '/blocks',
                     icon: IconReportColumns,
-                    show: true,
+                    show: app.features.blocks,
                 },
                 {
                     title: t('layout.sections'),
@@ -63,19 +64,19 @@ const useSidebarPrimarySections: () => SidebarSection[] = () => {
                     title: t('layout.posts'),
                     to: '/posts',
                     icon: IconRssFeed,
-                    show: true,
+                    show: app.features.posts,
                 },
                 {
                     title: t('layout.events'),
                     to: '/events',
                     icon: IconCalendarVue,
-                    show: true,
+                    show: app.features.events,
                 },
                 {
                     title: 'Personen',
                     to: '/people',
                     icon: IconGroup,
-                    show: isAdmin.value,
+                    show: isAdmin.value && app.features.people
                 },
             ],
         },
