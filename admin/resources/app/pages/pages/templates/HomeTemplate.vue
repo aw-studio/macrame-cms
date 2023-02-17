@@ -17,8 +17,13 @@
             <h2 class="mb-5">Hervorgehobene Meldungen</h2>
             <Card>
                 <div class="text-center">
-                    Hier werden die 12 aktuellsten Meldungen angezeigt.
+                    Hier werden die {{pageForm.attributes.posts_count}} aktuellsten Meldungen angezeigt.
                 </div>
+                 <Input
+                        label="Anazhl der Meldungen"
+                        type="number"
+                        v-model="pageForm.attributes.posts_count"
+                    />
             </Card>
         </section>
     </div>
@@ -32,12 +37,8 @@ import { SectionTextFullForm } from '@/modules/content';
 import { onMounted } from 'vue';
 
 onMounted(() => {
-    if (pageForm.value.attributes.foo === undefined) {
-        pageForm.value.attributes.foo = {
-            bar: {
-                baz: 'boom',
-            },
-        };
+    if (pageForm.value.attributes.posts_count === undefined) {
+        pageForm.value.attributes.posts_count = 12
     }
 });
 </script>

@@ -1,22 +1,18 @@
 <?php
 
-namespace Content;
+namespace Content\CTA;
 
-use App\Casts\ContentCast;
 use Illuminate\View\Component;
 
-class ContentResolver extends Component
+class CTAComponent extends Component
 {
-    public $content;
-
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(ContentCast $content)
+    public function __construct(public $content)
     {
-        $this->content = $content;
     }
 
     /**
@@ -26,6 +22,8 @@ class ContentResolver extends Component
      */
     public function render()
     {
-        return view('content::resolver', ['items' => $this->content->getItems()]);
+        return view('content::cta', [
+            'content' => $this->content,
+        ]);
     }
 }

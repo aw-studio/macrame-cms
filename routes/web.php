@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\MediaController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MediaConversionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/storage/c/{id}/{file}', [MediaController::class, 'conversion']);
+Route::get('/storage/c/{id}/{file}', MediaConversionController::class)->withoutMiddleware('web');
