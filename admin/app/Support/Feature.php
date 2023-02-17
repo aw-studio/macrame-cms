@@ -2,6 +2,7 @@
 
 namespace Admin\Support;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
 
 class Feature
@@ -29,7 +30,9 @@ class Feature
 
     public static function getFeatures(): array
     {
-        return Cache::remember('admin.features', 60 * 60 * 24, function (){
+        $ttl = App::environment('local') ? 0 : 60 * 60 * 24;
+
+        return Cache::remember('admin.features', $ttl, function (){
             $config = json_decode(file_get_contents(self::getConfigPath()), true);
 
             if(!isset($config['features']) || !is_array($config['features'])) {
