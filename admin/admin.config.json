@@ -3,6 +3,6 @@
         "posts": true,
         "events": false,
         "people": false,
-        "blocks": true
+        "blocks": false
     }
 }
