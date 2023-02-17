@@ -29,7 +29,7 @@ class Feature
 
     public static function getFeatures(): array
     {
-        return Cache::remember('admin.features', 60, function (){
+        return Cache::remember('admin.features', 60 * 60 * 24, function (){
             $config = json_decode(file_get_contents(self::getConfigPath()), true);
 
             if(!isset($config['features']) || !is_array($config['features'])) {
