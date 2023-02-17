@@ -7,7 +7,7 @@ use App\Casts\Resolver\LinkResolver;
 use App\Http\Resources\Wrapper\Image;
 use App\Models\File;
 
-class AnnouncementAttributesCast extends BaseContentCast
+class PostAttributesCast extends BaseContentCast
 {
     /**
      * Parse items.

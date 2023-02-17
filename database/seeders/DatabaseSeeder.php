@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             PageSeeder::class,
             NavigationSeeder::class,
             PartialSeeder::class,
-            AnnouncementSeeder::class,
+            PostSeeder::class,
             EventSeeder::class,
             PersonSeeder::class,
         ]);

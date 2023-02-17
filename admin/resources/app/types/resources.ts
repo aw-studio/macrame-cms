@@ -172,8 +172,8 @@ export type SystemUserResource = Resource<SystemUser>;
 export type SystemUserCollectionResource = CollectionResource<SystemUser>;
 export type SystemUserIndexResource = IndexResource<SystemUser>;
 
-// Announcement
-export interface Announcement {
+// Post
+export interface Post {
     id: number;
     attributes: {
         title: string;
@@ -194,9 +194,9 @@ export interface Announcement {
     is_featured: boolean;
     is_pinned: boolean;
 }
-export type AnnouncementResource = Resource<Announcement>;
-export type AnnouncementCollectionResource = CollectionResource<Announcement>;
-export type AnnouncementIndexResource = IndexResource<Announcement>;
+export type PostResource = Resource<Post>;
+export type PostCollectionResource = CollectionResource<Post>;
+export type PostIndexResource = IndexResource<Post>;
 
 export interface Event {
     id: number;

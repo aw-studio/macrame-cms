@@ -60,8 +60,8 @@ const useSidebarPrimarySections: () => SidebarSection[] = () => {
             title: 'Crud',
             items: [
                 {
-                    title: t('layout.announcements'),
-                    to: '/announcements',
+                    title: t('layout.posts'),
+                    to: '/posts',
                     icon: IconRssFeed,
                     show: true,
                 },

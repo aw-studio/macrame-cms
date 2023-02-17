@@ -2,14 +2,14 @@
 
 namespace Admin\Http\Controllers;
 
-use Admin\Http\Indexes\AnnouncementIndex;
-use Admin\Http\Resources\AnnouncementResource;
-use App\Models\Announcement;
+use Admin\Http\Indexes\PostIndex;
+use Admin\Http\Resources\PostResource;
+use App\Models\Post;
 use App\Services\CacheService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class AnnouncementController
+class PostController
 {
     /**
      * Get Page items.
@@ -17,14 +17,14 @@ class AnnouncementController
      * @param  Page  $page
      * @return Page
      */
-    public function index(Request $request, AnnouncementIndex $index)
+    public function index(Request $request, PostIndex $index)
     {
-        $query = Announcement::query();
+        $query = Post::query();
 
         return $index->items(
             $request,
             $query,
-            AnnouncementResource::class
+            PostResource::class
         );
     }
 
@@ -39,7 +39,7 @@ class AnnouncementController
         $validated = $request->validate([
             'attributes' => 'array',
             'attributes.title' => 'required',
-            'slug' => 'required|string|unique:announcements,slug',
+            'slug' => 'required|string|unique:posts,slug',
             'publish_at' => 'sometimes|date|nullable',
             'unpublish_at' => 'sometimes|date|nullable',
             'feature_until' => 'sometimes|date|nullable',
@@ -51,64 +51,64 @@ class AnnouncementController
             $validated['slug'] = Str::slug($validated['slug']);
         }
 
-        $announcement = Announcement::create([
+        $post = Post::create([
             ...$validated,
             'author_id' => auth()->id(),
         ]);
 
         app(CacheService::class)->forget(Anouncement::class);
 
-        return AnnouncementResource::make($announcement);
+        return PostResource::make($post);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Announcement  $announcement
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Announcement $announcement)
+    public function show(Post $post)
     {
-        return new AnnouncementResource($announcement);
+        return new PostResource($post);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  Request  $request
-     * @param  \App\Models\Announcement  $announcement
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Announcement $announcement)
+    public function update(Request $request, Post $post)
     {
         $validated = $request->validate([
             'attributes' => 'array',
             'content' => 'array',
-            'slug' => 'sometimes|string|unique:announcements,slug',
+            'slug' => 'sometimes|string|unique:posts,slug',
             'publish_at' => 'sometimes|date|nullable',
             'unpublish_at' => 'sometimes|date|nullable',
             'feature_until' => 'sometimes|date|nullable',
             'is_pinned' => 'sometimes|boolean',
         ]);
 
-        $announcement->update($validated);
+        $post->update($validated);
 
-        app(CacheService::class)->forget(Announcement::class);
+        app(CacheService::class)->forget(Post::class);
 
-        return AnnouncementResource::make($announcement);
+        return PostResource::make($post);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Announcement  $announcement
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Announcement $announcement)
+    public function destroy(Post $post)
     {
-        $announcement->delete();
+        $post->delete();
 
-        app(CacheService::class)->forget(Announcement::class);
+        app(CacheService::class)->forget(Post::class);
 
         return response()->noContent();
     }

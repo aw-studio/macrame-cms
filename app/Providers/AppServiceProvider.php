@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->app['chache.keys'] = [
-            'announcements' => [
+            'posts' => [
                 'home.featured',
                 'home.association',
             ],

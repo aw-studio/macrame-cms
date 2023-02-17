@@ -57,10 +57,10 @@ export * from './redirects/api';
 export * from './redirects/redirect.index';
 export * from './redirects/redirect.form';
 
-// announcements
-export * from './announcements/api';
-export * from './announcements/announcement.index';
-export * from './announcements/announcement.form';
+// posts
+export * from './posts/api';
+export * from './posts/post.index';
+export * from './posts/post.form';
 
 // events
 export * from './events/api';

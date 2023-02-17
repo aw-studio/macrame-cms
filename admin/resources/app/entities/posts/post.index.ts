@@ -1,9 +1,9 @@
 import { useIndex } from '@macramejs/macrame-vue3';
-import { Announcement } from '@/types';
-import { loadAnnouncements } from './api';
+import { Post } from '@/types';
+import { loadPosts } from './api';
 import { reactive } from 'vue';
 
-export const useAnnouncementIndex = () => {
+export const usePostIndex = () => {
     const defaultFilter = reactive({
         value: [],
     });
@@ -14,10 +14,10 @@ export const useAnnouncementIndex = () => {
         value: [],
     });
 
-    const index = useIndex<Announcement>({
+    const index = useIndex<Post>({
         load: params => {
             // console.log(params)
-            return loadAnnouncements(params);
+            return loadPosts(params);
         },
         sortBy: [
             {
@@ -37,9 +37,9 @@ export const useAnnouncementIndex = () => {
     return index;
 };
 
-export const announcementIndex = useAnnouncementIndex();
+export const postIndex = usePostIndex();
 
-export const usePressAnnouncementIndex = () => {
+export const usePressPostIndex = () => {
     const pressFilter = reactive({
         value: ['press'],
     });
@@ -48,9 +48,9 @@ export const usePressAnnouncementIndex = () => {
         value: [],
     });
 
-    const index = useIndex<Announcement>({
+    const index = useIndex<Post>({
         load: params => {
-            return loadAnnouncements(params);
+            return loadPosts(params);
         },
         sortBy: [
             {
@@ -69,4 +69,4 @@ export const usePressAnnouncementIndex = () => {
     return index;
 };
 
-export const pressAnnouncementIndex = usePressAnnouncementIndex();
+export const pressPostIndex = usePressPostIndex();

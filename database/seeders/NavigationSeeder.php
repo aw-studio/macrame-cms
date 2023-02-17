@@ -24,7 +24,7 @@ class NavigationSeeder extends Seeder
             'parent_id' => null,
         ]);
         MenuItem::create([
-            'title' => 'Meldungen',
+            'title' => 'Beiträge',
             'link' => 'route://site.2',
             'order_column' => '1',
             'new_tab' => null,

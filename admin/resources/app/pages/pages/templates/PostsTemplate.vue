@@ -10,9 +10,9 @@
             </Card>
         </section>
         <section>
-            <h2 class="mb-5">Meldungen</h2>
+            <h2 class="mb-5">Beiträge</h2>
             <Card class="flex justify-center">
-                <h3>Hier werden Meldungen automatisch angezeigt.</h3>
+                <h3>Hier werden Beiträge automatisch angezeigt.</h3>
             </Card>
         </section>
         <slot />

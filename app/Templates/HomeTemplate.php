@@ -2,7 +2,7 @@
 
 namespace App\Templates;
 
-use App\Models\Announcement;
+use App\Models\Post;
 
 class HomeTemplate extends BaseTemplate
 {
@@ -15,7 +15,7 @@ class HomeTemplate extends BaseTemplate
      */
     public function load()
     {
-        $this->posts = Announcement::query()
+        $this->posts = Post::query()
             ->limit($this->page->attributes->posts_count ?? 12)
             ->get();
     }
