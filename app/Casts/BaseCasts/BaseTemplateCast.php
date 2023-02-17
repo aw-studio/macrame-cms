@@ -26,7 +26,6 @@ abstract class BaseTemplateCast implements CastsAttributes
 
     public function getTemplateInstance($template, $model)
     {
-        $this->getTemplates();
         if (! array_key_exists($template, $this->templates)) {
             return new $this->templates['default']($model);
         }
