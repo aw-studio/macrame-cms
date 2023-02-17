@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Http\Resources\Wrapper\Image as ImageWrapper;
 use Illuminate\View\Component;
 
 class Image extends Component
@@ -23,7 +24,7 @@ class Image extends Component
      *
      * @return void
      */
-    public function __construct($sizes = null, $image = null, $overflow = false, $cover = false)
+    public function __construct($sizes = null, ImageWrapper $image = null, $overflow = false, $cover = false)
     {
         $this->sizes = $sizes ?? [10, 300, 500, 900, 1400];
         $this->cover = $cover ?? false;
@@ -37,14 +38,14 @@ class Image extends Component
     {
         $w = min($this->sizes);
 
-        return $this->image['url'].'?w='.$w;
+        return $this->image->getUrl().'?w='.$w;
     }
 
     public function setSrcset()
     {
         $srcset = '';
         foreach ($this->sizes as $size) {
-            $srcset = $srcset.$this->image['url'].'?w='.$size.' '.$size.'w, ';
+            $srcset = $srcset.$this->image->getUrl().'?w='.$size.' '.$size.'w, ';
         }
 
         return $srcset;

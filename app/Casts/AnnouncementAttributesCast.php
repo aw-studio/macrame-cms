@@ -2,13 +2,12 @@
 
 namespace App\Casts;
 
+use App\Casts\BaseCasts\BaseContentCast;
 use App\Casts\Resolver\LinkResolver;
-use App\Http\Resources\ImageResource;
 use App\Http\Resources\Wrapper\Image;
 use App\Models\File;
-use Macrame\Content\ContentCast;
 
-class AnnouncementAttributesCast extends ContentCast
+class AnnouncementAttributesCast extends BaseContentCast
 {
     /**
      * Parse items.
@@ -34,29 +33,21 @@ class AnnouncementAttributesCast extends ContentCast
                 array_key_exists('alt', $this->items['image']) ? $this->items['image']['alt'] : '',
                 array_key_exists('title', $this->items['image']) ? $this->items['image']['title'] : '',
             );
+            $this->items['image'] = $image;
         }
 
         // For any item, we want to make sure routes are replaced with actual links
-        array_walk_recursive($this->items, function (&$value) {
+        array_walk_recursive($this->items, function (&$value, $key) {
+            if (! is_array($value) && ! is_string($value) || $key == 'items') {
+                return;
+            }
+
+            // ray($value);
             $value = preg_replace_callback('/"(route:\/\/.*?)"/', function ($match) {
                 return '"'.LinkResolver::urlFromLink($match[1]).'"';
             }, $value);
         });
 
-        return [
-            ...$this->items,
-            'image' => $image ? (new ImageResource($image))->toArray(request()) : null,
-        ];
-    }
-
-    public function __get($key)
-    {
-        $this->parse();
-
-        if (! array_key_exists($key, $this->items)) {
-            return null;
-        }
-
-        return $this->items[$key];
+        return $this;
     }
 }

@@ -27,18 +27,16 @@ class ContentServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $directories = File::directories(base_path('content'));
+        $directories = File::directories(__DIR__);
 
-        // Iterate over each directory
+        // $this->loadViewsFrom(__DIR__, 'content');
+
         foreach ($directories as $directory) {
-            // Get an array of all the files within the current directory
             $files = File::files($directory);
-            // Iterate over each file
             foreach ($files as $file) {
                 if (! str_contains($filename = $file->getFilename(), 'Component')) {
                     continue;
                 }
-
                 $componentName = str_replace('.php', '', $filename);
 
                 $moduleName = (string) Str::of($componentName)->replaceLast('Component', '');

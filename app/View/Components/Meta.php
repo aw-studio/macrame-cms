@@ -26,7 +26,7 @@ class Meta extends Component
     {
         // dd($this->page->attributes->meta_title);
         return view('components.meta', [
-            'title' => !empty($this->page->attributes->meta_title) ? $this->page->attributes->meta_title : $this->page->name ?? null,
+            'title' => ! empty($this->page->attributes->meta_title) ? $this->page->attributes->meta_title : $this->page->name ?? null,
             'description' => null,
             'ogImage' => $this->page->attributes->meta_og_image_url ?? null,
             'ogUrl' => $this->page->attributes->meta_og_url ?? null,

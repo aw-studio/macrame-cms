@@ -8,7 +8,6 @@ use App\Models\Announcement;
 use App\Models\Event;
 use App\Models\Page;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\View;
 use Inertia\Inertia;
 
 class PageController extends Controller
@@ -24,37 +23,34 @@ class PageController extends Controller
 
         $this->abortIfPageCannotBeViewed($request, $page);
 
-        return View::make($page->template->data()->view(), [
-            'page' => $page,
-            'data' => $page->template->data(),
-        ]);
+        return $page->template->render();
     }
 
-    public function showAnnouncement(Request $request, Announcement $announcement)
-    {
-        return Inertia::render('Announcements/Show', [
-            'announcement' => (new AnnouncementResource($announcement))->toArray($request),
-            'page' => [
-                'meta' => [
-                    'title' => $announcement['title'],
-                    'description' => 'Lorem ipsum dolor',
-                ],
-            ],
-        ]);
-    }
+    // public function showAnnouncement(Request $request, Announcement $announcement)
+    // {
+    //     return Inertia::render('Announcements/Show', [
+    //         'announcement' => (new AnnouncementResource($announcement))->toArray($request),
+    //         'page' => [
+    //             'meta' => [
+    //                 'title' => $announcement['title'],
+    //                 'description' => 'Lorem ipsum dolor',
+    //             ],
+    //         ],
+    //     ]);
+    // }
 
-    public function showEvent(Request $request, Event $event)
-    {
-        return Inertia::render('Events/Show', [
-            'event' => (new EventResource($event))->toArray($request),
-            'page' => [
-                'meta' => [
-                    'title' => $event['title'],
-                    'description' => 'Lorem ipsum dolor',
-                ],
-            ],
-        ]);
-    }
+    // public function showEvent(Request $request, Event $event)
+    // {
+    //     return Inertia::render('Events/Show', [
+    //         'event' => (new EventResource($event))->toArray($request),
+    //         'page' => [
+    //             'meta' => [
+    //                 'title' => $event['title'],
+    //                 'description' => 'Lorem ipsum dolor',
+    //             ],
+    //         ],
+    //     ]);
+    // }
 
     /**
      * Determines whether a page can be viewed, aborts 404 otherwise.

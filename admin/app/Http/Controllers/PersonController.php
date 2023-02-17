@@ -4,7 +4,6 @@ namespace Admin\Http\Controllers;
 
 use Admin\Http\Indexes\PersonIndex;
 use Admin\Http\Resources\PersonResource;
-use App\Http\Requests\StorePersonRequest;
 use App\Models\File;
 use App\Models\Person;
 use App\Services\CacheService;

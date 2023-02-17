@@ -2,14 +2,12 @@
 
 namespace App\Casts;
 
+use Admin\Contracts\Pages\Page;
+use App\Casts\BaseCasts\BaseContentCast;
 use App\Casts\Resolver\LinkResolver;
-use App\Http\Resources\ImageResource;
-use App\Http\Resources\Wrapper\Image;
 use App\Models\File;
-use Macrame\Content\ContentCast;
-use Macrame\Content\Contracts\Parser;
 
-class PageAttributesCast extends ContentCast
+class PageAttributesCast extends BaseContentCast
 {
     /**
      * Parse items.
@@ -19,78 +17,40 @@ class PageAttributesCast extends ContentCast
      */
     public function parse()
     {
-        static $parsed = false;
+        $this->parseDefaultAttributes();
 
-        if ($parsed) {
-            return $this;
+        if ($this->model instanceof Page) {
+            $this->items = $this->model->template->parseAttributes($this->items);
         }
 
-        if (! is_array($this->items)) {
-            return $this;
-        }
+        return $this;
+    }
 
+    /**
+     * Check the attributes json content for some default items
+     * that might be included in every page
+     */
+    public function parseDefaultAttributes()
+    {
         // og image
+        // where ID is null will trigger da db query
         $og_image = File::query()
             ->where('id', $this->items['meta_og_image']['id'] ?? null)
             ->first();
         $this->items['meta_og_image_url'] = $og_image ? $og_image->getUrl() : null;
 
-        $this->items = match ((string) $this->model->template) {
-            'default' => $this->defaultTemplate($this->items),
-            'home' => $this->homeTemplate($this->items),
-            default => $this->items
-        };
-
         // For any item, we want to make sure routes are replaced with actual links
         array_walk_recursive($this->items, function (&$value, $key) {
-            if ($value instanceof Parser || $key == 'items') {
+            if (! is_array($value) && ! is_string($value) || $key == 'items') {
                 return;
             }
 
+            // ray($value);
             $value = preg_replace_callback('/"(route:\/\/.*?)"/', function ($match) {
                 return '"'.LinkResolver::urlFromLink($match[1]).'"';
             }, $value);
         });
 
-        $parsed = true;
-
         return $this;
-    }
-
-    public function defaultTemplate(array $items)
-    {
-        $header = array_key_exists('header', $items) ? $items['header'] : null;
-        if ($header) {
-            $image = File::query()
-                ->where('id', $items['header']['id'] ?? null)
-                ->first();
-
-            $image = new Image(
-                $image,
-                array_key_exists('alt', $header) ? $header['alt'] : '',
-                array_key_exists('title', $header) ? $header['title'] : '',
-            );
-        }
-
-        return [
-            ...$items,
-            'header' => $header ? (new ImageResource($image))->toArray(request()) : null,
-        ];
-    }
-
-    public function homeTemplate(array $items)
-    {
-        return $items;
-    }
-
-    public function __get($key)
-    {
-        $this->parse();
-
-        if (! array_key_exists($key, $this->items)) {
-            return null;
-        }
-
-        return $this->items[$key];
     }
 }

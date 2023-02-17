@@ -13,4 +13,9 @@ class Image
     ) {
         //
     }
+
+    public function getUrl(): string
+    {
+        return $this->image->getUrl();
+    }
 }

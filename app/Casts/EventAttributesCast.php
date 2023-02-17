@@ -2,10 +2,10 @@
 
 namespace App\Casts;
 
+use App\Casts\BaseCasts\BaseContentCast;
 use App\Casts\Resolver\LinkResolver;
-use Macrame\Content\ContentCast;
 
-class EventAttributesCast extends ContentCast
+class EventAttributesCast extends BaseContentCast
 {
     /**
      * Parse items.
@@ -26,8 +26,6 @@ class EventAttributesCast extends ContentCast
             }, $value);
         });
 
-        return [
-            ...$this->items,
-        ];
+        return $this;
     }
 }

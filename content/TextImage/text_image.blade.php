@@ -1,4 +1,5 @@
 <div class="container flex justify-center my-16">
+    {{-- @dd($content) --}}
     <div class="grid max-w-4xl grid-cols-12 gap-10">
         <div class="col-span-6">
             <div class="prose">
@@ -14,7 +15,7 @@
         </div>
         <div class="col-span-6">
             <!-- TODO Image -->
-            @isset($content['image']['url'])
+            @isset($content['image'])
                 <x-image :image="$content['image']" />
             @endisset
         </div>
