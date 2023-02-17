@@ -19,8 +19,8 @@ class PageTemplateCast extends BaseTemplateCast
     protected $templates = [
         'home' => HomeTemplate::class,
         'events' => EventsTemplate::class,
-        'default' => DefaultTemplate::class,
         'posts' => PostsTemplate::class,
         'contact' => ContactTemplate::class,
+        'default' => DefaultTemplate::class,
     ];
 }
