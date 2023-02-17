@@ -33,14 +33,14 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue';
 import { Modal, Input, Button } from '@/ui';
-import { blocksState, useAnnouncementForm } from '@/entities';
+import { blocksState, usePostForm } from '@/entities';
 import { useRouter } from 'vue-router';
 import { slugify } from '@/modules/helpers';
 import FormField from '@/ui/Form/FormField.vue';
 
 const isOpen = ref<boolean>(false);
 
-const form = useAnnouncementForm();
+const form = usePostForm();
 
 const router = useRouter();
 
@@ -48,7 +48,7 @@ const submit = () => {
     form.submit().then(response => {
         blocksState.load();
 
-        router.push(`/announcements/${response.data.data.id}`);
+        router.push(`/posts/${response.data.data.id}`);
 
         isOpen.value = false;
     });

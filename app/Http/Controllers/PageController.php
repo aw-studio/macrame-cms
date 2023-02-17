@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\AnnouncementResource;
+use App\Http\Resources\PostResource;
 use App\Http\Resources\EventResource;
-use App\Models\Announcement;
+use App\Models\Post;
 use App\Models\Event;
 use App\Models\Page;
 use Illuminate\Http\Request;
@@ -26,13 +26,13 @@ class PageController extends Controller
         return $page->template->render();
     }
 
-    // public function showAnnouncement(Request $request, Announcement $announcement)
+    // public function showPost(Request $request, Post $post)
     // {
-    //     return Inertia::render('Announcements/Show', [
-    //         'announcement' => (new AnnouncementResource($announcement))->toArray($request),
+    //     return Inertia::render('Posts/Show', [
+    //         'post' => (new PostResource($post))->toArray($request),
     //         'page' => [
     //             'meta' => [
-    //                 'title' => $announcement['title'],
+    //                 'title' => $post['title'],
     //                 'description' => 'Lorem ipsum dolor',
     //             ],
     //         ],

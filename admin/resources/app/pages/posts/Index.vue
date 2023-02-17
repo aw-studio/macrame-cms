@@ -2,14 +2,14 @@
     <Main>
         <Topbar>
             <div class="font-semibold">
-                {{ $t('announcements.announcements') }}
+                {{ $t('posts.posts') }}
             </div>
-            <AddAnnouncementModal />
+            <AddPostModal />
         </Topbar>
         <MainBody>
             <IndexContent />
             <MainContent>
-                <AnnouncementsIndex />
+                <PostsIndex />
             </MainContent>
             <IndexSidebar />
         </MainBody>
@@ -19,16 +19,16 @@
 <script lang="ts" setup>
 import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { announcementIndex } from '@/entities';
+import { postIndex } from '@/entities';
 import { Main, MainBody, MainContent } from '@/layout';
 import Topbar from '@/layout/components/Topbar.vue';
-import AddAnnouncementModal from './components/AddAnnouncementModal.vue';
+import AddPostModal from './components/AddPostModal.vue';
 import IndexSidebar from './components/IndexSidebar.vue';
-import AnnouncementsIndex from './components/AnnouncementsIndex.vue';
+import PostsIndex from './components/PostsIndex.vue';
 
 const route = useRoute();
 
 onMounted(() => {
-    announcementIndex.setPage((route.query.page || 1) as number);
+    postIndex.setPage((route.query.page || 1) as number);
 });
 </script>

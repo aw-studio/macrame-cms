@@ -10,7 +10,7 @@ import { routes as pagesRoutes } from '@/pages/pages/routes';
 import { routes as blocksRoutes } from '@/pages/blocks/routes';
 import { routes as partialsRoutes } from '@/pages/partials/routes';
 import { routes as appSettingsRoutes } from '@/pages/app-settings/routes';
-import { routes as announcementRoutes } from '@/pages/announcements/routes';
+import { routes as postRoutes } from '@/pages/posts/routes';
 import { routes as peopleRoutes } from '@/pages/people/routes';
 import { routes as eventRoutes } from '@/pages/events/routes';
 import { routes as redirectRoutes } from '@/pages/redirects/routes';
@@ -36,7 +36,7 @@ const routes: RouteRecordRaw[] = [
             ...blocksRoutes,
             ...partialsRoutes,
             ...appSettingsRoutes,
-            ...announcementRoutes,
+            ...postRoutes,
             ...eventRoutes,
             ...peopleRoutes,
             ...redirectRoutes,

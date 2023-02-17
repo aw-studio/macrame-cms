@@ -14,13 +14,13 @@
             <SectionTextFullForm v-model="pageForm.attributes.intro_text" />
         </section>
         <section>
-            <h2 class="mb-5">Hervorgehobene Meldungen</h2>
+            <h2 class="mb-5">Hervorgehobene Beiträge</h2>
             <Card>
                 <div class="text-center">
-                    Hier werden die {{pageForm.attributes.posts_count}} aktuellsten Meldungen angezeigt.
+                    Hier werden die {{pageForm.attributes.posts_count}} aktuellsten Beiträge angezeigt.
                 </div>
                  <Input
-                        label="Anazhl der Meldungen"
+                        label="Anazhl der Beiträge"
                         type="number"
                         v-model="pageForm.attributes.posts_count"
                     />

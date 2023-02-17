@@ -1,11 +1,11 @@
 import { useForm } from '@macramejs/macrame-vue3';
-import { loadAnnouncement, updateOrCreateAnnouncement } from './api';
-import { AnnouncementForm } from '@/types';
+import { loadPost, updateOrCreatePost } from './api';
+import { PostForm } from '@/types';
 
-export type UseAnnouncementForm = () => AnnouncementForm;
+export type UsePostForm = () => PostForm;
 
 // TODO: type
-const useAnnouncementForm = () => {
+const usePostForm = () => {
     return useForm({
         data: {
             slug: '',
@@ -47,8 +47,8 @@ const useAnnouncementForm = () => {
             district_association_id: 0,
             type: '',
         },
-        submit: (data, id) => updateOrCreateAnnouncement(data, id),
-        load: id => loadAnnouncement(id),
+        submit: (data, id) => updateOrCreatePost(data, id),
+        load: id => loadPost(id),
         transform: data => {
             return {
                 ...data,
@@ -63,6 +63,6 @@ const useAnnouncementForm = () => {
     });
 };
 
-const announcementForm = useAnnouncementForm();
+const postForm = usePostForm();
 
-export { useAnnouncementForm, announcementForm };
+export { usePostForm, postForm };

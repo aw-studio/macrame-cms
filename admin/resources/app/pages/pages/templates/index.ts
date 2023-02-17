@@ -1,7 +1,7 @@
 import { DefineComponent } from 'vue';
 import DefaultTemplate from './DefaultTemplate.vue';
 import HomeTemplate from './HomeTemplate.vue';
-import AnnouncementsTemplate from './AnnouncementsTemplate.vue';
+import PostsTemplate from './PostsTemplate.vue';
 import EventsTemplate from './EventsTemplate.vue';
 import ContactTemplate from './ContactTemplate.vue';
 
@@ -12,7 +12,7 @@ type Template = {
 const templates: Template = {
     default: DefaultTemplate,
     home: HomeTemplate,
-    announcements: AnnouncementsTemplate,
+    posts: PostsTemplate,
     events: EventsTemplate,
     contact: ContactTemplate,
 };
@@ -27,8 +27,8 @@ const templateOptions = [
         value: 'home',
     },
     {
-        label: 'Meldungen Übersicht',
-        value: 'announcements',
+        label: 'Beiträge Übersicht',
+        value: 'posts',
     },
     {
         label: 'Veranstaltungen Übersicht',

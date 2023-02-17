@@ -2,12 +2,12 @@ import { RouteRecordRaw } from 'vue-router';
 
 const routes: RouteRecordRaw[] = [
     {
-        path: 'announcements',
+        path: 'posts',
         component: () => import('../../layout/Wrapper.vue'),
         children: [
             { path: '', component: () => import('./Index.vue') },
             {
-                path: ':announcement',
+                path: ':post',
                 component: () => import('./Show.vue'),
             },
         ],

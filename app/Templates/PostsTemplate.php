@@ -2,12 +2,12 @@
 
 namespace App\Templates;
 
-use App\Models\Announcement;
+use App\Models\Post;
 
-class AnnouncementsTemplate extends BaseTemplate
+class PostsTemplate extends BaseTemplate
 {
     /**
-     * An array of announcements that are listed on the template.
+     * An array of posts that are listed on the template.
      *
      * @var array
      */
@@ -20,7 +20,7 @@ class AnnouncementsTemplate extends BaseTemplate
      */
     public function load()
     {
-        $this->posts = Announcement::published()->orderByDesc('publish_at')->paginate(15);
+        $this->posts = Post::published()->orderByDesc('publish_at')->paginate(15);
     }
 
     /**
@@ -39,7 +39,7 @@ class AnnouncementsTemplate extends BaseTemplate
     {
         $this->load();
 
-        return view('pages.announcements', [
+        return view('pages.posts', [
             'page' => $this->page,
             'posts' => $this->posts,
         ]);

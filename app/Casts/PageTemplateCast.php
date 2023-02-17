@@ -3,7 +3,7 @@
 namespace App\Casts;
 
 use App\Casts\BaseCasts\BaseTemplateCast;
-use App\Templates\AnnouncementsTemplate;
+use App\Templates\PostsTemplate;
 use App\Templates\ContactTemplate;
 use App\Templates\DefaultTemplate;
 use App\Templates\EventsTemplate;
@@ -20,7 +20,7 @@ class PageTemplateCast extends BaseTemplateCast
         'home' => HomeTemplate::class,
         'events' => EventsTemplate::class,
         'default' => DefaultTemplate::class,
-        'announcements' => AnnouncementsTemplate::class,
+        'posts' => PostsTemplate::class,
         'contact' => ContactTemplate::class,
     ];
 }
