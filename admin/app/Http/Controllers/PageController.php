@@ -119,10 +119,7 @@ class PageController
     {
         
         // delete corresponding link in menu
-        $pageMenuItem = MenuItem::where('link', 'route://site.'.$page->id)->first();
-        if ($pageMenuItem) {
-            $pageMenuItem->update(['link' => null]);
-        }
+        MenuItem::where('link', 'route://site.'.$page->id)->update(['link' => null]);
 
         $page->delete();
 
