@@ -6,6 +6,7 @@ use Admin\Http\Indexes\PageIndex;
 use Admin\Http\Resources\PageResource;
 use Admin\Http\Resources\StoredResource;
 use App\Models\Page;
+use App\Models\MenuItem;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -116,6 +117,10 @@ class PageController
      */
     public function destroy(Request $request, Page $page)
     {
+        
+        // delete corresponding link in menu
+        MenuItem::where('link', 'route://site.'.$page->id)->update(['link' => null]);
+
         $page->delete();
 
         return response()->noContent();
