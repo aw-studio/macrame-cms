@@ -28,6 +28,20 @@ class MapParser implements Parser
     public float $zoom;
 
     /**
+     * Markers.
+     *
+     * @var array
+     */
+    public array $markers;
+
+    /**
+     * mouseover.
+     *
+     * @var bool
+     */
+    public bool $mouseover;
+
+    /**
      * Create new Parser instance.
      *
      * @param  array  $value
@@ -44,10 +58,14 @@ class MapParser implements Parser
         $lat = $this->value['lat'] ? (float) $this->value['lat'] : 54;
         $lng = $this->value['lng'] ? (float) $this->value['lng'] : 11;
         $zoom = $this->value['zoom'] ? (float) $this->value['zoom'] : 8;
+        $mouseover = $this->value['mouseover'] ? (bool) $this->value['mouseover'] : false;
+        $markers = $this->value['markers'] ? (array) $this->value['markers'] : [];
 
         $this->lat = $lat;
         $this->lng = $lng;
         $this->zoom = $zoom;
+        $this->markers = $markers;
+        $this->mouseover = $mouseover;
     }
 
     /**
@@ -61,6 +79,8 @@ class MapParser implements Parser
             'lat' => $this->lat,
             'lng' => $this->lng,
             'zoom' => $this->zoom,
+            'markers' => $this->markers,
+            'mouseover' => $this->mouseover,
         ]);
     }
 }
